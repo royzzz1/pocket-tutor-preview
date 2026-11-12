@@ -1,0 +1,77 @@
+/* Parent letter — a letter, not a dashboard. Brand: radius 12px, teal top rule, light shadow. */
+.letter {
+  background: var(--sheet);
+  color: var(--ink);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(28, 28, 28, 0.06); /* taste-skill-ignore: brand letter may use this exact shadow */
+  border-top: 4px solid var(--teal);
+  padding: 36px 40px 40px;
+  max-width: 560px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.letter h1,
+.letter h2,
+.letter .letter-title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-optical-sizing: auto;
+  font-size: clamp(28px, 4vw, 36px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.letter .meta {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+.letter .block {
+  margin: 0 0 22px;
+}
+.letter .label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--teal);
+  margin: 0 0 4px;
+}
+.letter .body {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+.letter .foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-top: 28px;
+}
+.letter .score {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--on-teal);
+  background: var(--ok);
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+.letter .next {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .letter { padding: 28px 22px 32px; }
+}

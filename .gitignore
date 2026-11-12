@@ -1,0 +1,12 @@
+shots/
+_before-pads-fix/
+_lock-refs/
+_before-*
+assets/photos/_before*/
+assets/models/
+renders/
+.taste-skill/
+*.blend
+*.blend1
+.DS_Store
+scripts/__pycache__/

@@ -1,0 +1,59 @@
+:root {
+  --page: #EFEBE4;
+  --sheet: #F7F5F0;
+  --ink: #1C1C1C;
+  --muted: #6B6863;
+  --line: #DDD8D0;
+  --shell: #E2DFD8;
+  --shell-side: #C9C5BD;
+  --stand: #3A3936;
+  --screen: #22262B;
+  --face: #EEEEE8;
+  --teal: #1F5F6B;
+  --teal-soft: #D5E6E8;
+  --teal-deep: #163F47;
+  --on-teal: #F7F3EB;
+  --glint: #E8C56B;
+  --ok: #3E7558;
+  --miss: #A05848;
+  --tile-amber: #E8A03A;
+  --tile-yellow: #D0D624;
+  --tile-sky: #3BB4DC;
+  --tile-leaf: #3AA85E;
+  --on-tile: #1C1C1C;
+
+  --font-sans: "Atkinson Hyperlegible", "Noto Sans SC", "Source Sans 3", sans-serif;
+  --font-serif: "Fraunces", "Noto Serif SC", "Source Serif 4", Georgia, serif;
+
+  --step-display: clamp(56px, 8vw, 96px);
+  --step-section: clamp(28px, 3vw, 40px);
+  --step-fact: 18px;
+  --step-body: 18px;
+  --step-small: 14px;
+
+  --margin: clamp(20px, 3.2vw, 32px);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+img { max-width: 100%; display: block; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--teal-soft);
+  color: var(--ink);
+}

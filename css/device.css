@@ -1,0 +1,320 @@
+/* Kid path: thin even-thickness portrait slab. Screen 480×640. Not a wedge. */
+
+.device-frame {
+  /* Proportions follow the locked 68×85×9 mm body (same model as the three-view). */
+  --s: 0.78;
+  --bezel-left: 50px;   /* 5.5 mm */
+  --bezel-right: 70px;  /* 7.6 mm, screen left-aligned */
+  --bezel-y: 55px;      /* 6.2 mm top/bottom */
+  --front-w: 600px;     /* 50 + 480 + 70 = 68 mm at 8.82 px/mm */
+  --front-h: 750px;     /* 55 + 640 + 55 = 85 mm; 600:750 = 68:85 */
+  --radius: 80px;      /* 9 mm */
+  --edge-w: 16px;       /* visible sliver of the 9 mm edge, not a wedge */
+  --art-w: 660px;       /* front + sliver + proud wheel */
+  --art-h: 750px;
+  width: calc(var(--art-w) * var(--s));
+  height: calc(var(--art-h) * var(--s));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .device-frame { --s: min(0.78, (100vw - 32px) / 660); }
+}
+@media (max-height: 980px) {
+  .device-frame { --s: min(var(--s), (100svh - 220px) / 750); }
+}
+
+.slab {
+  position: relative;
+  width: var(--art-w);
+  height: var(--art-h);
+  transform: perspective(1600px) rotateY(-7deg) scale(var(--s));
+  transform-origin: center center;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 18px 28px rgba(28, 28, 28, 0.08)); /* taste-skill-ignore: physical device contact shadow */
+}
+
+.slab-front {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--front-w);
+  height: var(--front-h);
+  background: var(--shell);
+  border-radius: var(--radius);
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Front face has no contact pads. Magnetic 4-pad rails live on the top and bottom EDGES only, not drawn on this front-on clickable shell. */
+
+.bezel {
+  position: absolute;
+  left: var(--bezel-left);
+  top: var(--bezel-y);
+  width: 480px;
+  height: 640px;
+  background: #1a1d21;
+  border-radius: 22px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.bezel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 3px var(--teal); /* taste-skill-ignore: listening bezel, opacity only */
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.bezel[data-listening="true"]::after {
+  animation: teal-pulse 1.6s ease-in-out infinite;
+}
+
+.led {
+  position: absolute;
+  left: var(--bezel-left);
+  width: 480px;
+  top: calc(var(--bezel-y) + 640px + 14px);
+  height: 8px;
+  z-index: 4;
+  pointer-events: none;
+}
+.led::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--teal);
+  opacity: 0.85;
+}
+.slab[data-listening="true"] .led::after {
+  animation: teal-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes teal-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.screen {
+  width: 480px;
+  height: 640px;
+  background: var(--screen);
+  color: var(--face);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.screen[data-tile="amber"] { background: var(--tile-amber); color: var(--on-tile); }
+.screen[data-tile="yellow"] { background: var(--tile-yellow); color: var(--on-tile); }
+.screen[data-tile="sky"] { background: var(--tile-sky); color: var(--on-tile); }
+.screen[data-tile="leaf"] { background: var(--tile-leaf); color: var(--on-tile); }
+
+/* Even-thickness right edge, ~9mm, not a wedge side-panel. */
+.slab-edge {
+  position: absolute;
+  left: calc(var(--front-w) - 6px);
+  top: 48px;
+  width: var(--edge-w);
+  height: calc(var(--front-h) - 96px);
+  background: var(--shell-side);
+  border-radius: 0 10px 10px 0;
+  z-index: 1;
+}
+
+.wheel {
+  position: absolute;
+  left: calc(var(--front-w) - 20px);
+  top: 248px;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  z-index: 5;
+}
+.wheel-ring {
+  display: block;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(from 0deg, #B4B0A8 0deg 7deg, #8F8B83 7deg 11deg); /* taste-skill-ignore: knurled wheel texture, not page chrome */
+  box-shadow: inset 0 0 0 8px #C9C5BD, 1px 1px 3px rgba(28, 28, 28, 0.14); /* taste-skill-ignore: wheel knurl, not page chrome */
+}
+.wheel-hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background: #D8D4CC;
+}
+
+.press {
+  position: absolute;
+  left: calc(var(--front-w) - 4px);
+  top: 510px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--teal);
+  cursor: pointer;
+  z-index: 5;
+}
+.press:hover { background: var(--teal-deep); }
+.press:active { transform: scale(0.96); }
+
+/* Geometry face: two dots, one mouth. Not a smiley font. */
+.face {
+  position: relative;
+  width: 280px;
+  height: 320px;
+}
+.face .eye {
+  position: absolute;
+  top: 88px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--face);
+}
+.face .eye.left { left: 62px; }
+.face .eye.right { right: 62px; }
+.face .mouth {
+  position: absolute;
+  left: 50%;
+  top: 200px;
+  width: 96px;
+  height: 6px;
+  margin-left: -48px;
+  border-radius: 3px;
+  background: var(--face);
+}
+.face[data-mouth="smile"] .mouth {
+  width: 88px;
+  height: 36px;
+  margin-left: -44px;
+  top: 188px;
+  background: transparent;
+  border: 6px solid var(--face);
+  border-top: 0;
+  border-radius: 0 0 88px 88px;
+}
+
+.glyph {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 160px;
+  line-height: 1;
+  color: inherit;
+}
+
+.line {
+  margin: 0;
+  padding: 0 36px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.25;
+  text-align: center;
+  color: inherit;
+}
+
+.practice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 24px;
+}
+.practice .problem {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--face);
+}
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 220px;
+}
+.choice {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1;
+  padding: 14px 18px;
+  border: 0;
+  background: #2C3138;
+  color: var(--face);
+  cursor: pointer;
+  text-align: center;
+  border-radius: 8px;
+}
+.choice[data-state="ok"] {
+  background: var(--ok);
+  color: var(--on-teal);
+  cursor: default;
+}
+.choice[data-state="miss"] {
+  background: var(--miss);
+  color: var(--on-teal);
+}
+.score {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--ok);
+}
+
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 24px;
+}
+.done .face { width: 220px; height: 200px; }
+.done .face .eye { top: 48px; }
+.done .face .mouth { top: 130px; }
+.done .face[data-mouth="smile"] .mouth { top: 118px; }
+.done .line {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--face);
+  padding: 0 28px;
+}
+.done a {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  color: var(--face);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bezel[data-listening="true"]::after,
+  .slab[data-listening="true"] .led::after {
+    animation: none;
+    opacity: 1;
+  }
+}

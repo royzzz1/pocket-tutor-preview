@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>讲解 · 口袋教师</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/device.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body class="page-kid">
+  <header class="topbar">
+    <a href="index.html">口袋教师</a>
+    <span class="quiet" id="phase-label">闲</span>
+  </header>
+
+  <main class="kid-main">
+    <div class="device-frame">
+      <div class="slab" data-ui id="slab">
+        <div class="slab-front">
+          <div class="bezel" id="bezel" data-listening="false">
+            <div class="screen" id="screen" role="img" aria-live="polite"></div>
+          </div>
+          <span class="led" aria-hidden="true"></span>
+        </div>
+        <div class="slab-edge" aria-hidden="true"></div>
+        <button class="wheel" id="wheel" type="button" aria-label="滚轮，看下一步">
+          <span class="wheel-ring"></span>
+          <span class="wheel-hub"></span>
+        </button>
+        <button class="press" id="press" type="button" aria-label="按一下开口"></button>
+      </div>
+    </div>
+    <p class="device-caption" id="device-caption">按右侧的青键，开口</p>
+    <button class="step-btn" id="next-btn" type="button">下一步</button>
+    <nav class="kid-links">
+      <a href="parent.html">家长摘要</a>
+      <a href="kid.html?step=idle">从头再来</a>
+    </nav>
+  </main>
+  <script src="js/session.js"></script>
+</body>
+</html>
