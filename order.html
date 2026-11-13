@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="page.title.order">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Order · Pocket Tutor</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/letter.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("pocket-tutor-lang") === "zh") {
+          document.documentElement.lang = "zh-Hans";
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="page-marketing page-order">
+  <header class="whisper">
+    <h1 class="wordmark"><a class="wordmark" href="index.html" data-i18n="brand">Pocket Tutor</a></h1>
+    <div class="whisper-end">
+      <a class="entry" href="kid.html" data-i18n="nav.try">Try a lesson</a>
+      <a class="entry" href="order.html" aria-current="page" data-i18n="nav.order">Order now</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-switch-sep" aria-hidden="true">/</span>
+        <button type="button" data-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="order" id="order">
+    <h2 class="order-title" data-i18n="order.title">Order Pocket Tutor</h2>
+    <p class="lede" data-i18n="order.lede">One Pocket Tutor, for a desk or a bag.</p>
+    <p class="order-price" data-i18n="order.price">$199</p>
+    <p class="order-unit" data-i18n="order.unit">One device.</p>
+    <div class="order-actions">
+      <button type="button" class="cta" data-i18n="order.cta">Order now</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="brand" data-i18n="brand">Pocket Tutor</p>
+    <nav>
+      <a href="kid.html" data-i18n="nav.try">Try a lesson</a>
+      <a href="parent.html" data-i18n="nav.parent">Parent summary</a>
+      <a href="order.html" aria-current="page" data-i18n="nav.order">Order now</a>
+      <a href="about.html" data-i18n="nav.about">About us</a>
+    </nav>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+</body>
+</html>

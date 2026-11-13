@@ -979,16 +979,20 @@ body.page-marketing .whisper {
 }
 
 
-/* Closing banner: full-width 21:9, already feathered into white. */
+/* Closing banner: full-bleed 21:9 frame, cover the box. Do not use height: auto. */
 .close-banner {
   width: 100%;
   margin: 8vh 0 0;
   background: var(--page);
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
 }
 .close-banner img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Side stickers live in the left/right rails only. Hidden on narrow screens. */
@@ -1308,5 +1312,69 @@ body.page-marketing .whisper {
 
   .about-marks .mark-pku img {
     height: 64px;
+  }
+}
+
+/* Personal order page: same type and rail as About, no separate product shot. */
+.order {
+  width: min(var(--content), calc(100% - 2 * var(--rail)));
+  margin-inline: auto;
+  padding: calc(18vh + 48px) 0 10vh;
+  min-height: 70svh;
+  background: var(--page);
+  box-sizing: border-box;
+}
+
+.order-title {
+  margin: 0 0 0.4em;
+  max-width: 14em;
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.order .lede {
+  margin: 0;
+  max-width: 40rem;
+  font-family: var(--font-hand);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.order-price {
+  margin: 0.7em 0 0.15em;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(56px, 8vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.order-unit {
+  margin: 0 0 1.8em;
+  font-family: var(--font-hand);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.order-actions .cta {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-family: var(--font-sans);
+  color: var(--on-teal);
+}
+
+@media (max-width: 700px) {
+  .order {
+    padding: calc(72px + env(safe-area-inset-top, 0px)) 0 48px;
+    min-height: 0;
   }
 }
