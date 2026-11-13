@@ -53,3 +53,11 @@
   font-display: swap;
   src: url("../fonts/noto-serif-500.woff") format("woff");
 }
+
+@font-face {
+  font-family: "ZCOOL KuaiLe";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/zcool-kuaile.woff") format("woff");
+}

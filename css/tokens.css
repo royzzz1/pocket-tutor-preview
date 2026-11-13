@@ -24,7 +24,7 @@
 
   --font-sans: "Atkinson Hyperlegible", "Noto Sans SC", "Source Sans 3", sans-serif;
   --font-serif: "Fraunces", "Noto Serif SC", "Source Serif 4", Georgia, serif;
-  --font-hand: "Gochi Hand", cursive;
+  --font-hand: "Gochi Hand", "ZCOOL KuaiLe", cursive;
 
   --step-display: clamp(56px, 8vw, 96px);
   --step-section: clamp(28px, 3vw, 40px);
