@@ -818,9 +818,11 @@ body.page-marketing {
 }
 
 .canvas-art {
+  display: block;
   width: 100%;
   height: 100%;
-  background: var(--page);
+  object-fit: cover;
+  object-position: center 68%;
 }
 
 .intro {
@@ -851,4 +853,60 @@ body.page-marketing {
   .canvas { min-height: 480px; }
   .intro { padding: 10vh var(--margin) 6vh; }
   .intro-title { font-size: clamp(36px, 11vw, 56px); }
+}
+
+
+/* Picture-book pages: full-bleed illustrations, short title only, no left copy column. */
+.story-header {
+  padding: 12vh var(--margin) 5vh;
+  text-align: center;
+  background: var(--page);
+}
+
+.story-title {
+  margin: 0 auto;
+  max-width: 22em;
+  font-family: "Gochi Hand", "Noto Serif SC", cursive;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.leaf {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 640px;
+  overflow: hidden;
+  background: var(--page);
+}
+
+.leaf-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+.leaf-title {
+  position: absolute;
+  left: var(--margin);
+  bottom: 8vh;
+  z-index: 2;
+  margin: 0;
+  max-width: 12em;
+  font-family: "Gochi Hand", "Noto Serif SC", cursive;
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.18;
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .story-header { padding: 8vh var(--margin) 3vh; }
+  .story-title { font-size: clamp(26px, 8vw, 36px); }
+  .leaf { min-height: 480px; }
+  .leaf-title { font-size: clamp(24px, 7vw, 32px); bottom: 6vh; }
 }
