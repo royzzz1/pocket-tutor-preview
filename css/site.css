@@ -728,3 +728,80 @@ body.page-marketing {
   .jiaoyu-card-body { font-size: 15px; }
   .jiaoyu-end { height: 30vh; }
 }
+
+/* Quotes + backers: underdog page order, our type. Placeholder copy, not real endorsements. */
+.voices,
+.backers {
+  padding: 12vh var(--margin) 10vh;
+  background: var(--page);
+}
+
+.voices-title,
+.backers-title {
+  margin: 0 auto 48px;
+  max-width: 22em;
+  text-align: center;
+  font-family: "Gochi Hand", "Noto Serif SC", cursive;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.voices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px 40px;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.voice {
+  margin: 0;
+}
+
+.voice p {
+  margin: 0 0 16px;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.voice footer {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--muted, #5A5854);
+}
+
+.backers-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: min(720px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.backers-list li {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.page-marketing > .site-footer {
+  width: auto;
+  padding: 24px var(--margin) 36px;
+}
+
+@media (max-width: 700px) {
+  .voices,
+  .backers { padding: 8vh var(--margin) 7vh; }
+  .voices-title,
+  .backers-title { font-size: clamp(26px, 8vw, 36px); margin-bottom: 28px; }
+  .voices-grid { grid-template-columns: 1fr; gap: 28px; }
+}
