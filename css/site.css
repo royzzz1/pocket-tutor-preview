@@ -40,18 +40,13 @@ body.page-marketing {
   pointer-events: auto;
 }
 
-.whisper .entry,
-.whisper .nav-page {
+.whisper .entry {
   font-family: var(--font-sans);
   font-size: 13px;
   line-height: 1;
   letter-spacing: 0.04em;
   color: var(--muted);
   text-decoration: none;
-}
-
-.whisper .nav-page[aria-current="page"] {
-  color: var(--ink);
 }
 
 .whisper .wordmark:hover {
@@ -927,8 +922,6 @@ body.page-marketing {
 @media (max-width: 700px) {
   .story-header { padding: 8vh var(--margin) 3vh; }
   .story-title { font-size: clamp(26px, 8vw, 36px); }
-  .leaf { min-height: 480px; }
-  .leaf-title { font-size: clamp(24px, 7vw, 32px); bottom: 6vh; }
 }
 
 
@@ -990,26 +983,48 @@ body.page-marketing {
     padding: 48px var(--margin) 16px;
   }
 
+  .story-deck {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--margin);
+    padding: 0 var(--margin) 36px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .story-deck::-webkit-scrollbar {
+    display: none;
+  }
+
   .leaf {
+    flex: 0 0 calc(100vw - var(--margin) - 52px);
+    scroll-snap-align: start;
     height: auto;
     min-height: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(28, 28, 28, 0.08);
   }
 
   .leaf-art {
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-    object-position: center center;
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    object-position: right center;
   }
 
   .leaf-title {
     position: static;
     left: auto;
     bottom: auto;
-    padding: 16px var(--margin) 36px;
+    padding: 14px 16px 18px;
     max-width: none;
-    font-size: clamp(24px, 7vw, 32px);
+    font-size: clamp(22px, 6.5vw, 28px);
   }
 }
 
