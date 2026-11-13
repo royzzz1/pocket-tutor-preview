@@ -805,3 +805,50 @@ body.page-marketing {
   .backers-title { font-size: clamp(26px, 8vw, 36px); margin-bottom: 28px; }
   .voices-grid { grid-template-columns: 1fr; gap: 28px; }
 }
+
+/* First screen follows underdog: a full-bleed art canvas, then the title below.
+   Not a left-copy column beside an empty well. */
+.canvas {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 640px;
+  overflow: hidden;
+  background: var(--page);
+}
+
+.canvas-art {
+  width: 100%;
+  height: 100%;
+  background: var(--page);
+}
+
+.intro {
+  padding: 16vh var(--margin) 8vh;
+  background: var(--page);
+}
+
+.intro-title {
+  margin: 0 0 0.4em;
+  max-width: 14em;
+  font-family: "Gochi Hand", "Noto Serif SC", cursive;
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 1.12;
+  color: var(--ink);
+}
+
+.intro .lede {
+  margin: 0 0 1.35em;
+  max-width: 22em;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .canvas { min-height: 480px; }
+  .intro { padding: 10vh var(--margin) 6vh; }
+  .intro-title { font-size: clamp(36px, 11vw, 56px); }
+}
