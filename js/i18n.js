@@ -1,4 +1,4 @@
-/* Site language: default English, switch in the top right. Key: pocket-tutor-lang */
+/* Site language: default English, switch is in the footer on marketing pages. Key: pocket-tutor-lang */
 (function (global) {
   var KEY = "pocket-tutor-lang";
 
@@ -12,6 +12,7 @@
       "brand": "Pocket Tutor",
       "nav.try": "Try a lesson",
       "nav.order": "Order now",
+      "nav.signin": "Sign in",
       "nav.about": "About us",
       "nav.parent": "Parent summary",
       "nav.kidSession": "See this session",
@@ -121,6 +122,7 @@
       "brand": "口袋教师",
       "nav.try": "试一课",
       "nav.order": "现在订购",
+      "nav.signin": "登录",
       "nav.about": "关于我们",
       "nav.parent": "家长摘要",
       "nav.kidSession": "看孩子这一次",

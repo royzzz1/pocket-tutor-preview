@@ -47,6 +47,42 @@ body.page-marketing .whisper {
 
 .whisper .cta-nav {
   pointer-events: auto;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 36px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.whisper .cta-nav-signin {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--ink);
+}
+
+.whisper .cta-nav-signin:hover {
+  background: var(--ink);
+  color: var(--page);
+}
+
+.whisper .cta-nav-order {
+  background: var(--teal);
+  color: var(--on-teal);
+}
+
+.whisper .cta-nav-order:hover {
+  background: var(--teal-deep);
+  color: var(--on-teal);
 }
 
 .whisper .entry {
@@ -320,6 +356,29 @@ body.page-marketing .whisper {
 }
 
 .site-footer a:hover { color: var(--ink); }
+
+.site-footer .footer-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 16px 28px;
+}
+
+.site-footer .lang-switch {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.site-footer .lang-switch button {
+  color: var(--muted);
+}
+
+.site-footer .lang-switch button:hover,
+.site-footer .lang-switch button[aria-pressed="true"] {
+  color: var(--ink);
+  font-weight: 600;
+}
 
 /* Motion: shutter on the first still; later type enters; stills may drift slightly. */
 .shot-hero img.still {
@@ -1155,11 +1214,13 @@ body.page-marketing .whisper {
   }
 
   .whisper-end {
-    gap: 12px;
+    gap: 10px;
   }
 
-  .lang-switch {
-    font-size: 18px;
+  .whisper .cta-nav {
+    font-size: 16px;
+    min-height: 36px;
+    padding: 8px 12px;
   }
 
   .intro {
