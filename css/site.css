@@ -16,7 +16,7 @@ body.page-marketing {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22px var(--margin) 0;
+  padding: 16px var(--margin);
   pointer-events: none;
 }
 
@@ -28,7 +28,7 @@ body.page-marketing {
 .whisper .wordmark {
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 21px;
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -42,11 +42,15 @@ body.page-marketing {
 
 .whisper .entry {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 18px;
   line-height: 1;
-  letter-spacing: 0.04em;
-  color: var(--muted);
+  letter-spacing: 0.02em;
+  color: var(--ink);
   text-decoration: none;
+}
+
+.whisper .entry:hover {
+  opacity: 0.7;
 }
 
 .whisper .wordmark:hover {
@@ -56,7 +60,7 @@ body.page-marketing {
 .whisper-end {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
   pointer-events: auto;
 }
 
@@ -65,10 +69,10 @@ body.page-marketing {
   align-items: center;
   gap: 6px;
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 18px;
   line-height: 1;
-  letter-spacing: 0.04em;
-  color: var(--muted);
+  letter-spacing: 0.02em;
+  color: var(--ink);
 }
 
 .lang-switch button {
@@ -78,13 +82,15 @@ body.page-marketing {
   padding: 0;
   margin: 0;
   font: inherit;
-  color: var(--muted);
+  font-weight: 400;
+  color: var(--ink);
   cursor: pointer;
 }
 
 .lang-switch button:hover,
 .lang-switch button[aria-pressed="true"] {
   color: var(--ink);
+  font-weight: 600;
 }
 
 .topbar .whisper-end {
@@ -388,7 +394,6 @@ body.page-marketing {
   .hero-copy .hero-title { font-size: clamp(40px, 11vw, 56px); }
   .hero-copy .lede { font-size: 15px; }
   .hero-well { width: 100%; flex: 0 0 auto; }
-  .whisper { padding-top: 18px; }
 }
 
 /* Kid and parent chrome, shared quietly. */
@@ -563,7 +568,7 @@ body.page-marketing {
 }
 
 @media (max-width: 700px) {
-  .whisper .wordmark { font-size: 15px; }
+  .whisper .wordmark { font-size: 20px; }
   .shot-copy { max-width: 16rem; justify-content: flex-end; bottom: 8vh; top: auto; height: auto; }
   .shot-copy .shot-title { font-size: clamp(28px, 9vw, 40px); }
   .shot-letter { flex-direction: column; justify-content: center; align-items: flex-start; }
@@ -948,8 +953,13 @@ body.page-marketing {
    in the intro, so they drop out of the slim bar. */
 @media (max-width: 700px) {
   .whisper {
-    padding: calc(10px + env(safe-area-inset-top, 0px)) var(--margin) 10px;
+    padding: calc(14px + env(safe-area-inset-top, 0px)) var(--margin) 14px;
     background: #ffffff;
+    align-items: center;
+  }
+
+  .whisper .wordmark {
+    font-size: 20px;
   }
 
   .whisper .entry {
@@ -957,7 +967,11 @@ body.page-marketing {
   }
 
   .whisper-end {
-    gap: 10px;
+    gap: 12px;
+  }
+
+  .lang-switch {
+    font-size: 18px;
   }
 
   .intro {
