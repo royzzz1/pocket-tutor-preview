@@ -1,5 +1,12 @@
 /* Marketing site: 1x.tech rhythm, full-bleed product cinema, sparse type. */
 
+/* Roy 2026-11-13: marketing ground is pure white. Do not change --page in tokens.css
+   (kid.html / parent.html still use the cream page). */
+body.page-marketing {
+  --page: #FFFFFF;
+}
+
+
 .whisper {
   position: fixed;
   top: 0;
@@ -8,7 +15,7 @@
   z-index: 20;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   padding: 22px var(--margin) 0;
   pointer-events: none;
 }
@@ -21,26 +28,67 @@
 .whisper .wordmark {
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1;
-  letter-spacing: 0.22em;
-  color: var(--muted);
+  letter-spacing: -0.02em;
+  color: var(--ink);
   margin: 0;
   text-decoration: none;
+}
+
+.whisper .cta-nav {
+  pointer-events: auto;
 }
 
 .whisper .entry {
   font-family: var(--font-sans);
   font-size: 13px;
   line-height: 1;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.04em;
   color: var(--muted);
   text-decoration: none;
 }
 
-.whisper .entry:hover,
 .whisper .wordmark:hover {
   color: var(--ink);
+}
+
+.whisper-end {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  pointer-events: auto;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.lang-switch button {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.lang-switch button:hover,
+.lang-switch button[aria-pressed="true"] {
+  color: var(--ink);
+}
+
+.topbar .whisper-end {
+  gap: 16px;
 }
 
 /* Each marketing chapter is one viewport of photograph. */
@@ -62,8 +110,7 @@
 }
 
 .shot-hero img.still {
-  object-position: 54% 48%;
-  transform-origin: 58% 50%;
+  object-position: 50% 50%;
 }
 
 .shot-macro img.still {
@@ -71,7 +118,7 @@
 }
 
 .shot-name img.still {
-  object-position: 50% 30%;
+  object-position: 50% 50%;
 }
 
 .shot-acc img.still {
@@ -115,8 +162,9 @@
   line-height: 1.55;
   color: var(--ink);
   margin: 0 0 1.35em;
-  max-width: 22em;
+  max-width: 16em;
 }
+
 
 .cta {
   display: inline-block;
@@ -139,6 +187,60 @@
   transform: translateY(1px);
 }
 
+/* First screen: left short title + one sentence + teal CTA; right reserved art well. */
+.shot-hero {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 4.2vw, 72px);
+  padding: 96px var(--margin) 64px;
+  box-sizing: border-box;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: min(24rem, 36vw);
+  max-width: 24rem;
+  pointer-events: none;
+}
+
+.hero-copy .hero-title {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: clamp(44px, 4.8vw, 70px);
+  line-height: 1.18;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin: 0 0 0.4em;
+}
+
+.hero-copy .lede {
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0 0 1.25em;
+  max-width: 22em;
+}
+
+.hero-copy .cta {
+  pointer-events: auto;
+  align-self: flex-start;
+}
+
+/* Reserved illustration well: large, landscape, empty. No type, no placeholder copy. */
+.hero-well {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 16 / 10;
+  background: color-mix(in srgb, var(--shell) 42%, #ffffff);
+}
+
 .acc-caption {
   position: absolute;
   left: var(--margin);
@@ -153,22 +255,19 @@
 }
 
 .shot-letter {
-  height: auto;
-  min-height: 100svh;
+  height: 100svh;
+  min-height: 640px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  padding: 96px var(--margin) 0;
+  padding: 12vh var(--margin);
   background: var(--page);
 }
 .shot-letter .letter {
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.shot-letter .letter {
-  width: 100%;
+  width: min(36rem, 48vw);
+  margin: 0 3vw 0 0;
+  flex: 0 0 auto;
 }
 
 .site-footer {
@@ -231,6 +330,9 @@
   .name-layer .product,
   .name-layer .lede,
   .name-layer .cta,
+  .hero-copy .hero-title,
+  .hero-copy .lede,
+  .hero-copy .cta,
   .acc-caption,
   .shot-letter .letter,
   .site-footer .brand,
@@ -255,6 +357,9 @@
   .name-layer .product,
   .name-layer .lede,
   .name-layer .cta,
+  .hero-copy .hero-title,
+  .hero-copy .lede,
+  .hero-copy .cta,
   .acc-caption,
   .shot-letter .letter,
   .site-footer .brand,
@@ -268,6 +373,21 @@
 @media (max-width: 700px) {
   .name-layer { bottom: 8vh; max-width: 20rem; }
   .name-layer .product { font-size: clamp(40px, 12vw, 64px); }
+  .shot-hero {
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 88px var(--margin) 40px;
+    gap: 28px;
+  }
+  .hero-copy {
+    width: 100%;
+    max-width: 22rem;
+    flex: 0 0 auto;
+  }
+  .hero-copy .hero-title { font-size: clamp(40px, 11vw, 56px); }
+  .hero-copy .lede { font-size: 15px; }
+  .hero-well { width: 100%; flex: 0 0 auto; }
   .whisper { padding-top: 18px; }
 }
 
@@ -349,3 +469,262 @@
 }
 
 .kid-links a:hover { color: var(--ink); }
+
+
+/* Module / scenario captions over the 手帐 doodle stills. */
+.shot-module,
+.shot-scene {
+  /* still uses the shared .shot + .still full-bleed rule */
+}
+.shot-title {
+  position: absolute;
+  left: var(--margin);
+  bottom: 8vh;
+  z-index: 2;
+  margin: 0;
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+.shot-note {
+  position: absolute;
+  left: var(--margin);
+  bottom: 5vh;
+  z-index: 2;
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: 18px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+.shot-scene#desk .shot-title {
+  bottom: 9.5vh;
+}
+.shot-scene#summary .shot-title {
+  bottom: 92px;
+}
+.shot-scene#summary .site-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: auto;
+  margin: 0;
+  padding: 18px var(--margin) 28px;
+  background: var(--page);
+}
+
+
+/* Module / scene: one title line, large doodle beside, lots of white. */
+.shot-copy {
+  position: absolute;
+  left: var(--margin);
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 22rem;
+  pointer-events: none;
+}
+
+.shot-copy .shot-title {
+  position: static;
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: clamp(36px, 4.2vw, 58px);
+  line-height: 1.18;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin: 0;
+}
+
+.shot-copy .shot-note {
+  position: static;
+  margin: 0.7em 0 0;
+  font-family: var(--font-hand);
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--ink);
+  max-width: none;
+}
+
+/* Older overlay-caption positions no longer apply when wrapped in .shot-copy. */
+.shot-scene#desk .shot-title,
+.shot-scene#summary .shot-title {
+  bottom: auto;
+}
+
+@media (max-width: 700px) {
+  .whisper .wordmark { font-size: 15px; }
+  .shot-copy { max-width: 16rem; justify-content: flex-end; bottom: 8vh; top: auto; height: auto; }
+  .shot-copy .shot-title { font-size: clamp(28px, 9vw, 40px); }
+  .shot-letter { flex-direction: column; justify-content: center; align-items: flex-start; }
+  .shot-letter .letter { width: 100%; margin: 8vh 0 0; }
+}
+
+
+
+
+/* 寓教於樂: one chapter, cards pull up and stack (gakku-style), not three separate pages.
+   Pinned cards stay full size and leave a step of the top edge; only the incoming card
+   starts slightly small and fades up to size. Title and stack leave together. */
+.jiaoyu {
+  position: relative;
+  background: var(--page);
+  padding: 0 0 48px;
+}
+
+.jiaoyu-pin {
+  position: relative;
+}
+
+.jiaoyu-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 64px var(--margin) 12px;
+  text-align: center;
+  background: var(--page);
+  pointer-events: none;
+}
+
+.jiaoyu-title {
+  margin: 0 auto;
+  max-width: 22em;
+  font-family: "Gochi Hand", "Noto Serif SC", cursive;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.jiaoyu-cards {
+  position: relative;
+  width: min(1120px, calc(100% - 2 * var(--margin)));
+  margin: 0 auto;
+}
+
+.jiaoyu-card {
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.jiaoyu-card[data-index="0"] { top: var(--jiaoyu-base, 136px); z-index: 1; }
+.jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 136px) + 44px); z-index: 2; }
+.jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 136px) + 88px); z-index: 3; margin-bottom: 0; }
+
+.jiaoyu-end {
+  height: 45vh;
+}
+
+.jiaoyu-card-face {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, 38%) 1fr;
+  width: 100%;
+  height: calc(100svh - 260px);
+  max-height: 620px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 24px 48px rgba(28, 28, 28, 0.08), 0 2px 8px rgba(28, 28, 28, 0.04);
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.jiaoyu-card-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: clamp(28px, 4vw, 56px) clamp(24px, 3vw, 44px);
+  background: #fff;
+  z-index: 1;
+}
+
+.jiaoyu-card-title {
+  margin: 0;
+  font-family: "Gochi Hand", "Noto Serif SC", cursive;
+  font-weight: 400;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.18;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.jiaoyu-card-body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.55;
+  color: var(--muted, #5A5854);
+}
+
+.jiaoyu-still {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .jiaoyu-card-face {
+    animation: jiaoyu-card-in both linear;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+}
+
+@keyframes jiaoyu-card-in {
+  from { transform: scale(0.92); opacity: 0.65; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jiaoyu-card-face {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .jiaoyu { padding-bottom: 32px; }
+  .jiaoyu-header { padding: 56px var(--margin) 8px; }
+  .jiaoyu-title { font-size: clamp(26px, 8vw, 36px); }
+  .jiaoyu-card { margin-bottom: 16px; }
+  .jiaoyu-card[data-index="0"] { top: var(--jiaoyu-base, 108px); }
+  .jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 108px) + 28px); }
+  .jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 108px) + 56px); }
+  .jiaoyu-card-face {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(200px, 46%) 1fr;
+    height: calc(100svh - 180px);
+    max-height: none;
+    border-radius: 16px;
+  }
+  .jiaoyu-still {
+    grid-row: 1;
+    object-position: right 40%;
+    min-height: 200px;
+  }
+  .jiaoyu-card-copy {
+    grid-row: 2;
+    padding: 20px 20px 24px;
+    gap: 10px;
+  }
+  .jiaoyu-card-title { font-size: clamp(24px, 7vw, 32px); }
+  .jiaoyu-card-body { font-size: 15px; }
+  .jiaoyu-end { height: 30vh; }
+}

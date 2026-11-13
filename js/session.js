@@ -3,25 +3,45 @@ const STEPS = [
   { id: "idle", phase: "闲", kind: "face", mouth: "flat" },
   { id: "listen", phase: "听", kind: "face", mouth: "smile", listening: true },
   { id: "eq", phase: "讲", kind: "line", text: "2x + 3 = 11" },
-  { id: "yi", phase: "讲", kind: "glyph", glyph: "移", tile: "yellow" },
-  { id: "jian", phase: "讲", kind: "glyph", glyph: "减", tile: "amber" },
+  { id: "yi", phase: "讲", kind: "glyph", glyphKey: "glyph.move", glyph: "Move", tile: "yellow" },
+  { id: "jian", phase: "讲", kind: "glyph", glyphKey: "glyph.sub", glyph: "Sub", tile: "amber" },
   { id: "twox", phase: "讲", kind: "line", text: "2x = 8" },
-  { id: "div", phase: "讲", kind: "line", text: "两边同除以 2" },
+  { id: "div", phase: "讲", kind: "line", textKey: "kid.div2", text: "Divide both sides by 2" },
   { id: "x4", phase: "讲", kind: "line", text: "x = 4" },
-  { id: "yan", phase: "讲", kind: "glyph", glyph: "验", tile: "leaf" },
+  { id: "yan", phase: "讲", kind: "glyph", glyphKey: "glyph.check", glyph: "Check", tile: "leaf" },
   { id: "check", phase: "讲", kind: "line", text: "2×4 + 3 = 11" },
   { id: "practice", phase: "练", kind: "practice", problem: "3 + x = 7", correct: "x = 4", options: ["x = 4", "x = 3"] },
   { id: "result", phase: "练", kind: "result", problem: "3 + x = 7", answer: "x = 4", score: "3 / 4" },
-  { id: "done", phase: "完", kind: "done", text: "家长会看到这次摘要" }
+  { id: "done", phase: "完", kind: "done", textKey: "kid.done", text: "Parents will see a summary of this session" }
 ];
 
-const CAPTIONS = {
-  闲: "按右侧的青键，开口",
-  听: "在听。转右侧滚轮，看讲解",
-  讲: "转右侧滚轮，或点下一步",
-  练: "选一个答案",
-  完: "这一次讲完了"
+const PHASE_I18N = {
+  闲: "phase.idle",
+  听: "phase.listen",
+  讲: "phase.teach",
+  练: "phase.practice",
+  完: "phase.done"
 };
+
+const CAPTION_I18N = {
+  闲: "caption.idle",
+  听: "caption.listen",
+  讲: "caption.teach",
+  练: "caption.practice",
+  完: "caption.done"
+};
+
+function tr(key, fallback) {
+  return (window.PocketI18n && PocketI18n.t(key)) || fallback;
+}
+
+function lineText(step) {
+  return step.textKey ? tr(step.textKey, step.text) : step.text;
+}
+
+function glyphText(step) {
+  return step.glyphKey ? tr(step.glyphKey, step.glyph) : step.glyph;
+}
 
 function $(sel, root = document) { return root.querySelector(sel); }
 
@@ -47,11 +67,11 @@ function render(step) {
   if (slab) slab.dataset.listening = listening ? "true" : "false";
   document.body.dataset.phase = step.phase;
   document.body.dataset.step = step.id;
-  if (phase) phase.textContent = step.phase;
-  if (caption) caption.textContent = CAPTIONS[step.phase] || "";
+  if (phase) phase.textContent = tr(PHASE_I18N[step.phase], step.phase);
+  if (caption) caption.textContent = tr(CAPTION_I18N[step.phase], "");
   if (nextBtn) {
     nextBtn.hidden = step.kind === "practice" || step.kind === "done" || (step.kind === "face" && step.phase === "闲");
-    nextBtn.textContent = step.phase === "听" ? "开始讲解" : "下一步";
+    nextBtn.textContent = step.phase === "听" ? tr("kid.startTeach", "Start the lesson") : tr("kid.nextBtn", "Next");
   }
 
   if (step.kind === "face") {
@@ -60,11 +80,11 @@ function render(step) {
   }
   if (step.kind === "glyph") {
     screen.dataset.tile = step.tile;
-    screen.innerHTML = `<p class="glyph">${step.glyph}</p>`;
+    screen.innerHTML = `<p class="glyph">${glyphText(step)}</p>`;
     return;
   }
   if (step.kind === "line") {
-    screen.innerHTML = `<p class="line">${step.text}</p>`;
+    screen.innerHTML = `<p class="line">${lineText(step)}</p>`;
     return;
   }
   if (step.kind === "practice") {
@@ -91,8 +111,8 @@ function render(step) {
   if (step.kind === "done") {
     screen.innerHTML = `<div class="done">
       ${renderFace("smile")}
-      <p class="line">${step.text}</p>
-      <a href="parent.html">看这次摘要</a>
+      <p class="line">${lineText(step)}</p>
+      <a href="parent.html">${tr("kid.seeSummary", "See this summary")}</a>
     </div>`;
   }
 }
@@ -162,6 +182,10 @@ window.Tutor = { STEPS, setIndex, next, startFromQuery, goto: (id) => {
   const i = STEPS.findIndex((s) => s.id === id);
   if (i >= 0) setIndex(i);
 } };
+
+document.addEventListener("pocket-tutor:lang", () => {
+  if (STEPS[index]) render(STEPS[index]);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   bind();

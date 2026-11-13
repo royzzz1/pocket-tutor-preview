@@ -1,37 +1,54 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en" data-i18n-title="page.title.parent">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>这次学习摘要 · 口袋教师</title>
+  <title>Summary of this session · Pocket Tutor</title>
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/letter.css">
   <link rel="stylesheet" href="css/site.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("pocket-tutor-lang") === "zh") {
+          document.documentElement.lang = "zh-Hans";
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body class="page-parent">
   <header class="topbar">
-    <a href="index.html">口袋教师</a>
-    <a class="quiet" href="kid.html">看孩子这一次</a>
+    <a href="index.html" data-i18n="brand">Pocket Tutor</a>
+    <div class="whisper-end">
+      <a class="quiet" href="kid.html" data-i18n="parent.linkKid">See this session</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-switch-sep" aria-hidden="true">/</span>
+        <button type="button" data-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
   </header>
   <main class="parent-main">
-    <p class="parent-note">家长用手机或网页看信。孩子不在这封信上操作。</p>
+    <p class="parent-note" data-i18n="parent.note">Parents read this letter on a phone or the web. The child does not use this letter.</p>
     <article class="letter" data-ui>
-      <h1>这次学习摘要</h1>
-      <p class="meta">11月12日 · 开口 · 约8分钟</p>
+      <h1 data-i18n="letter.title">Summary of this session</h1>
+      <p class="meta" data-i18n="letter.meta">Nov 12 · Spoken · About 8 minutes</p>
       <div class="block">
-        <p class="label">问了什么</p>
-        <p class="body">解方程 2x + 3 = 11</p>
+        <p class="label" data-i18n="letter.asked">What was asked</p>
+        <p class="body" data-i18n="letter.askedBody">Solve 2x + 3 = 11</p>
       </div>
       <div class="block">
-        <p class="label">怎么讲的</p>
-        <p class="body">先移项再除系数，再用原式验算。</p>
+        <p class="label" data-i18n="letter.how">How it was explained</p>
+        <p class="body" data-i18n="letter.howBody">Move the term, divide by the coefficient, then check in the original equation.</p>
       </div>
       <div class="foot">
         <span class="score">3 / 4</span>
-        <p class="next">下一题建议：带括号的一步方程</p>
+        <p class="next" data-i18n="letter.next">Next up: a one-step equation with parentheses</p>
       </div>
     </article>
   </main>
+  <script src="js/i18n.js"></script>
 </body>
 </html>

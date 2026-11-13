@@ -1,81 +1,142 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en" data-i18n-title="page.title">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>口袋教师</title>
+  <title>Pocket Tutor</title>
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/letter.css">
   <link rel="stylesheet" href="css/site.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("pocket-tutor-lang") === "zh") {
+          document.documentElement.lang = "zh-Hans";
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body class="page-marketing">
   <header class="whisper">
-    <h1 class="wordmark"><a class="wordmark" href="#top">口袋教师</a></h1>
-    <a class="entry" href="kid.html">试一次讲解</a>
+    <h1 class="wordmark"><a class="wordmark" href="#top" data-i18n="brand">Pocket Tutor</a></h1>
+    <div class="whisper-end">
+      <a class="entry" href="kid.html" data-i18n="nav.try">Try a lesson</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-switch-sep" aria-hidden="true">/</span>
+        <button type="button" data-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
   </header>
 
   <section class="shot shot-hero" id="top">
-    <h2 class="visually-hidden">一台轻薄手持</h2>
-    <img class="still" src="assets/photos/hero-idle.jpg" width="1920" height="1080" alt="口袋教师，一块浅灰等厚竖板，闲时脸上两点和一条嘴，右侧是青键和薄滚轮">
+    <div class="hero-copy">
+      <h2 class="hero-title" data-i18n="hero.title">Ask or snap a problem</h2>
+      <p class="lede" data-i18n="hero.lede">Practice after the lesson, and parents get a summary of this session.</p>
+      <a class="cta" href="kid.html" data-i18n="hero.cta">Try a lesson</a>
+    </div>
+    <div class="hero-well" aria-hidden="true"></div>
   </section>
 
-  <section class="shot shot-macro" id="edge">
-    <h2 class="visually-hidden">约九毫米等厚，右侧青键与薄滚轮</h2>
-    <img class="still" src="assets/photos/macro-edge.jpg" width="1920" height="1080" alt="侧面特写：约九毫米等厚的机身，右侧一枚薄滚轮和一颗青绿按键，顶底有磁吸触点" loading="lazy">
-  </section>
 
-  <section class="shot shot-name" id="name">
-    <img class="still" src="assets/photos/still-name.jpg" width="1920" height="1080" alt="" loading="lazy">
-    <div class="name-layer">
-      <p class="product">口袋教师</p>
-      <p class="lede">开口或拍题，讲完再练，家长收到这一次的摘要</p>
-      <a class="cta" href="kid.html">试一次讲解</a>
+  <section class="jiaoyu" id="jiaoyu">
+    <div class="jiaoyu-pin">
+      <header class="jiaoyu-header">
+        <h2 class="jiaoyu-title" data-i18n="jiaoyu.title">Learning with Fun and Structure</h2>
+      </header>
+      <div class="jiaoyu-cards">
+        <article class="jiaoyu-card" data-index="0">
+          <div class="jiaoyu-card-face">
+            <div class="jiaoyu-card-copy">
+              <h3 class="jiaoyu-card-title" data-i18n="jiaoyu.card1">A path for every student</h3>
+              <p class="jiaoyu-card-body" data-i18n="jiaoyu.body1">Your AI teacher meets each student where they are, and shapes a different path for every one. Task-based learning feels like an adventure — as playful as a game, and built on a clear, step-by-step structure.</p>
+            </div>
+            <img class="jiaoyu-still" src="assets/illustrations/learning-path.jpg" width="1280" height="720" alt="A cream screen robot on a forked dirt path, with colored flags marking different routes across the hills" data-i18n-alt="alt.path" loading="lazy">
+          </div>
+        </article>
+        <article class="jiaoyu-card" data-index="1">
+          <div class="jiaoyu-card-face">
+            <div class="jiaoyu-card-copy">
+              <h3 class="jiaoyu-card-title" data-i18n="jiaoyu.card2">Talk &amp; Learn</h3>
+              <p class="jiaoyu-card-body" data-i18n="jiaoyu.body2">Interactive learning that adjusts in the moment to a child’s tone and ideas, with timely feedback. It guides and encourages their potential, so every conversation becomes a chance to learn.</p>
+            </div>
+            <img class="jiaoyu-still" src="assets/illustrations/talk-to-learn.jpg" width="1280" height="720" alt="A child seen from behind, talking to the cream screen robot, empty speech bubbles in the air" data-i18n-alt="alt.talk" loading="lazy">
+          </div>
+        </article>
+        <article class="jiaoyu-card" data-index="2">
+          <div class="jiaoyu-card-face">
+            <div class="jiaoyu-card-copy">
+              <h3 class="jiaoyu-card-title" data-i18n="jiaoyu.card3">Practice anywhere</h3>
+              <p class="jiaoyu-card-body" data-i18n="jiaoyu.body3">Short, focused practice you can do in different places — refined lessons, wherever you are.</p>
+            </div>
+            <img class="jiaoyu-still" src="assets/illustrations/practice-anywhere.jpg" width="1280" height="720" alt="The cream screen robot beside three small scenes: a desk with a workbook, a window looking out, and a grassy patch with a ball" data-i18n-alt="alt.anywhere" loading="lazy">
+          </div>
+        </article>
+        <div class="jiaoyu-end" aria-hidden="true"></div>
+      </div>
     </div>
   </section>
 
-  <section class="shot shot-acc" id="cradle">
-    <h2 class="visually-hidden">桌面座</h2>
-    <img class="still" src="assets/photos/cradle.jpg" width="1920" height="1080" alt="薄机斜承在一只浅灰桌面座上，约二十度" loading="lazy">
-    <p class="acc-caption">桌面座</p>
+  <section class="shot shot-module" id="speak">
+    <img class="still" src="assets/drawings/doodle-speak.png" width="1920" height="1080" alt="Talk it through: Pocket Tutor held in the hands, front wheel, flush teal key on the right edge" data-i18n-alt="alt.speak" loading="lazy">
+    <div class="shot-copy"><h2 class="shot-title" data-i18n="shot.speak">Talk it through</h2></div>
   </section>
 
-  <section class="shot shot-acc" id="camera">
-    <h2 class="visually-hidden">摄像头模组</h2>
-    <img class="still" src="assets/photos/camera-puck.jpg" width="1920" height="1080" alt="一只安静的浅灰镜头模组，底部有四个磁吸触点" loading="lazy">
-    <p class="acc-caption">摄像头模组</p>
+  <section class="shot shot-module" id="capture">
+    <img class="still" src="assets/drawings/doodle-capture.png" width="1920" height="1080" alt="Snap a problem: a camera module aimed at a problem on paper, contacts only on the mating edge, Pocket Tutor beside it" data-i18n-alt="alt.capture" loading="lazy">
+    <div class="shot-copy"><h2 class="shot-title" data-i18n="shot.capture">Snap a problem</h2></div>
   </section>
 
-  <section class="shot shot-acc" id="diy">
-    <h2 class="visually-hidden">DIY 示例</h2>
-    <img class="still" src="assets/photos/diy-ears.jpg" width="1920" height="1080" alt="用户可自己做的猫耳摄像头示例，不是品牌默认" loading="lazy">
-    <p class="acc-caption">DIY 示例</p>
+  <section class="shot shot-module" id="practice">
+    <img class="still" src="assets/drawings/doodle-practice.png" width="1920" height="1080" alt="Practice after the lesson: the screen shows one problem, 3 + x = 7" data-i18n-alt="alt.practice" loading="lazy">
+    <div class="shot-copy"><h2 class="shot-title" data-i18n="shot.practice">Practice after the lesson</h2></div>
   </section>
 
   <section class="shot shot-letter" id="letter">
+    <div class="shot-copy"><h2 class="shot-title" data-i18n="shot.letter">Parents get a summary</h2></div>
     <article class="letter" data-ui>
-      <h2>这次学习摘要</h2>
-      <p class="meta">11月12日 · 开口 · 约8分钟</p>
+      <h2 data-i18n="letter.title">Summary of this session</h2>
+      <p class="meta" data-i18n="letter.meta">Nov 12 · Spoken · About 8 minutes</p>
       <div class="block">
-        <p class="label">问了什么</p>
-        <p class="body">解方程 2x + 3 = 11</p>
+        <p class="label" data-i18n="letter.asked">What was asked</p>
+        <p class="body" data-i18n="letter.askedBody">Solve 2x + 3 = 11</p>
       </div>
       <div class="block">
-        <p class="label">怎么讲的</p>
-        <p class="body">先移项再除系数，再用原式验算。</p>
+        <p class="label" data-i18n="letter.how">How it was explained</p>
+        <p class="body" data-i18n="letter.howBody">Move the term, divide by the coefficient, then check in the original equation.</p>
       </div>
       <div class="foot">
         <span class="score">3 / 4</span>
-        <p class="next">下一题建议：带括号的一步方程</p>
+        <p class="next" data-i18n="letter.next">Next up: a one-step equation with parentheses</p>
       </div>
     </article>
+  </section>
+
+  <section class="shot shot-scene" id="palm">
+    <img class="still" src="assets/drawings/doodle-palm.png" width="1920" height="1080" alt="In the palm: Pocket Tutor resting on an open hand, no child’s face drawn" data-i18n-alt="alt.palm" loading="lazy">
+    <div class="shot-copy"><h2 class="shot-title" data-i18n="shot.palm">In the palm</h2></div>
+  </section>
+
+  <section class="shot shot-scene" id="desk">
+    <img class="still" src="assets/drawings/doodle-desk.png" width="1920" height="1080" alt="At the desk, about twenty degrees, facing the work" data-i18n-alt="alt.desk" loading="lazy">
+    <div class="shot-copy"><h2 class="shot-title" data-i18n="shot.desk">At the desk</h2>
+    <p class="shot-note" data-i18n="shot.deskNote">About twenty degrees, facing the work</p></div>
+  </section>
+
+  <section class="shot shot-scene" id="summary">
+    <img class="still" src="assets/drawings/doodle-summary.png" width="1920" height="1080" alt="Parents see the summary: hands holding this session’s letter, Pocket Tutor beside it" data-i18n-alt="alt.summary" loading="lazy">
+    <div class="shot-copy"><h2 class="shot-title" data-i18n="shot.summary">Parents see the summary</h2></div>
     <footer class="site-footer">
-      <p class="brand">口袋教师</p>
+      <p class="brand" data-i18n="brand">Pocket Tutor</p>
       <nav>
-        <a href="kid.html">试一次讲解</a>
-        <a href="parent.html">家长摘要</a>
+        <a href="kid.html" data-i18n="nav.try">Try a lesson</a>
+        <a href="parent.html" data-i18n="nav.parent">Parent summary</a>
       </nav>
     </footer>
   </section>
+  <script src="js/i18n.js"></script>
+  <script src="js/jiaoyu.js"></script>
 </body>
 </html>

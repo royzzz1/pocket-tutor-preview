@@ -2,16 +2,16 @@
 
 .device-frame {
   /* Proportions follow the locked 68×85×9 mm body (same model as the three-view). */
-  --s: 0.78;
-  --bezel-left: 50px;   /* 5.5 mm */
-  --bezel-right: 70px;  /* 7.6 mm, screen left-aligned */
-  --bezel-y: 55px;      /* 6.2 mm top/bottom */
-  --front-w: 600px;     /* 50 + 480 + 70 = 68 mm at 8.82 px/mm */
-  --front-h: 750px;     /* 55 + 640 + 55 = 85 mm; 600:750 = 68:85 */
-  --radius: 80px;      /* 9 mm */
-  --edge-w: 16px;       /* visible sliver of the 9 mm edge, not a wedge */
-  --art-w: 660px;       /* front + sliver + proud wheel */
-  --art-h: 750px;
+  --s: 0.62;
+  --bezel-left: 61px;    /* 5.5 mm */
+  --bezel-right: 189px;  /* 17 mm reserved strip for the front wheel */
+  --bezel-y: 136px;      /* ~12.6 mm top/bottom */
+  --front-w: 730px;      /* 61 + 480 + 189; 730:912 = 68:85 */
+  --front-h: 912px;
+  --radius: 97px;       /* 9 mm */
+  --edge-w: 16px;        /* visible sliver of the 9 mm edge, not a wedge */
+  --art-w: 760px;        /* front + sliver */
+  --art-h: 912px;
   width: calc(var(--art-w) * var(--s));
   height: calc(var(--art-h) * var(--s));
   display: flex;
@@ -20,10 +20,10 @@
 }
 
 @media (max-width: 700px) {
-  .device-frame { --s: min(0.78, (100vw - 32px) / 660); }
+  .device-frame { --s: min(0.62, (100vw - 32px) / 760); }
 }
 @media (max-height: 980px) {
-  .device-frame { --s: min(var(--s), (100svh - 220px) / 750); }
+  .device-frame { --s: min(var(--s), (100svh - 220px) / 912); }
 }
 
 .slab {
@@ -135,10 +135,10 @@
 
 .wheel {
   position: absolute;
-  left: calc(var(--front-w) - 20px);
-  top: 248px;
-  width: 52px;
-  height: 52px;
+  left: 557px; /* centred in the 17 mm front-right reserved strip */
+  top: 267px;
+  width: 156px;
+  height: 156px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -147,8 +147,8 @@
 }
 .wheel-ring {
   display: block;
-  width: 52px;
-  height: 52px;
+  width: 156px;
+  height: 156px;
   border-radius: 50%;
   background:
     repeating-conic-gradient(from 0deg, #B4B0A8 0deg 7deg, #8F8B83 7deg 11deg); /* taste-skill-ignore: knurled wheel texture, not page chrome */
@@ -158,9 +158,9 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 16px;
-  height: 16px;
-  margin: -8px 0 0 -8px;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
   border-radius: 50%;
   background: #D8D4CC;
 }
@@ -168,7 +168,7 @@
 .press {
   position: absolute;
   left: calc(var(--front-w) - 4px);
-  top: 510px;
+  top: 614px;
   width: 26px;
   height: 26px;
   padding: 0;
