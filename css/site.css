@@ -729,17 +729,22 @@ body.page-marketing {
   .jiaoyu-end { height: 30vh; }
 }
 
-/* Voices: section title + three circular portraits, not a quote wall.
-   Backers styles stay for when logos are decided. */
+/* Voices: swipeable quote cards (gakku-style peek), not a wall of reviews. */
 .voices,
 .backers {
-  padding: 12vh var(--margin) 10vh;
+  padding: 12vh 0 10vh;
   background: var(--page);
+}
+
+.voices-header {
+  padding: 0 var(--margin);
+  margin-bottom: 36px;
+  text-align: center;
 }
 
 .voices-title,
 .backers-title {
-  margin: 0 auto 48px;
+  margin: 0 auto;
   max-width: 22em;
   text-align: center;
   font-family: "Gochi Hand", "Noto Serif SC", cursive;
@@ -749,27 +754,55 @@ body.page-marketing {
   color: var(--ink);
 }
 
-.voices-faces {
-  list-style: none;
-  margin: 0 auto;
-  padding: 0;
+.voices-lede {
+  margin: 14px auto 0;
+  max-width: 36rem;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.voices-deck {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: clamp(20px, 4.5vw, 64px);
-  flex-wrap: wrap;
-  width: min(920px, 100%);
+  gap: 16px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--margin);
+  padding: 0 var(--margin) 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
-.voices-faces li {
+.voices-deck::-webkit-scrollbar {
+  display: none;
+}
+
+.voice-card {
+  flex: 0 0 min(440px, calc(100vw - var(--margin) - 72px));
+  scroll-snap-align: start;
   margin: 0;
-  flex: 0 0 auto;
+  padding: 28px 28px 32px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(28, 28, 28, 0.08);
+  box-sizing: border-box;
 }
 
-.voices-faces img {
+.voice-card img {
   display: block;
-  width: min(220px, 28vw);
-  height: auto;
+  width: 88px;
+  height: 88px;
+  margin: 0 0 20px;
+}
+
+.voice-card blockquote {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
 }
 
 .intro-actions {
@@ -814,11 +847,8 @@ body.page-marketing {
 }
 
 @media (max-width: 700px) {
-  .voices,
-  .backers { padding: 8vh var(--margin) 7vh; }
   .voices-title,
-  .backers-title { font-size: clamp(26px, 8vw, 36px); margin-bottom: 28px; }
-  .voices-faces img { width: min(180px, 42vw); }
+  .backers-title { font-size: clamp(26px, 8vw, 36px); }
 }
 
 /* First screen follows underdog: a full-bleed art canvas, then the title below.
@@ -871,7 +901,7 @@ body.page-marketing {
 }
 
 
-/* Picture-book pages: full-bleed illustrations, short title only, no left copy column. */
+/* Picture-book pages: large illustration, title and body under the art — no left copy column. */
 .story-header {
   padding: 12vh var(--margin) 5vh;
   text-align: center;
@@ -888,11 +918,21 @@ body.page-marketing {
   color: var(--ink);
 }
 
+.story-lede {
+  margin: 16px auto 0;
+  max-width: 36rem;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
 .leaf {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100svh;
-  min-height: 640px;
+  min-height: 100svh;
   overflow: hidden;
   background: var(--page);
 }
@@ -900,22 +940,41 @@ body.page-marketing {
 .leaf-art {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 62svh;
+  min-height: 420px;
   object-fit: cover;
   object-position: right center;
 }
 
+.leaf-copy {
+  padding: 28px var(--margin) 56px;
+  max-width: 42rem;
+}
+
 .leaf-title {
-  position: absolute;
-  left: var(--margin);
-  bottom: 8vh;
-  z-index: 2;
-  margin: 0;
-  max-width: 12em;
+  position: static;
+  margin: 0 0 8px;
+  max-width: 16em;
   font-family: "Gochi Hand", "Noto Serif SC", cursive;
   font-weight: 400;
   font-size: clamp(28px, 3.2vw, 44px);
   line-height: 1.18;
+  color: var(--ink);
+}
+
+.leaf-sub {
+  margin: 0 0 12px;
+  font-family: var(--font-sans);
+  font-size: clamp(17px, 1.3vw, 21px);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.leaf-body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.6;
   color: var(--ink);
 }
 
@@ -961,22 +1020,27 @@ body.page-marketing {
 
   .voices,
   .backers {
-    padding: 40px var(--margin) 48px;
+    padding: 40px 0 48px;
+  }
+
+  .voices-header {
+    margin-bottom: 22px;
   }
 
   .voices-title,
   .backers-title {
-    margin-bottom: 28px;
+    margin-bottom: 0;
   }
 
-  .voices-faces {
-    flex-wrap: nowrap;
-    gap: 12px;
-    width: 100%;
+  .voice-card {
+    flex: 0 0 calc(100vw - var(--margin) - 52px);
+    padding: 22px 20px 24px;
   }
 
-  .voices-faces img {
-    width: min(108px, 28vw);
+  .voice-card img {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 16px;
   }
 
   .story-header {
@@ -1018,13 +1082,26 @@ body.page-marketing {
     object-position: right center;
   }
 
+  .leaf-copy {
+    padding: 16px 16px 20px;
+    max-width: none;
+  }
+
   .leaf-title {
     position: static;
     left: auto;
     bottom: auto;
-    padding: 14px 16px 18px;
+    padding: 0;
     max-width: none;
     font-size: clamp(22px, 6.5vw, 28px);
+  }
+
+  .leaf-sub {
+    font-size: 16px;
+  }
+
+  .leaf-body {
+    font-size: 15px;
   }
 }
 
