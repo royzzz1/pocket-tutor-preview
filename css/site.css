@@ -4,6 +4,10 @@
    (kid.html / parent.html still use the cream page). */
 body.page-marketing {
   --page: #FFFFFF;
+  /* Below the hero, content gathers to a centered well — not edge-to-edge tiling. */
+  --rail: clamp(28px, 8vw, 112px);
+  --content: 1080px;
+  --measure: 40rem;
 }
 
 
@@ -595,7 +599,7 @@ body.page-marketing {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 64px var(--margin) 12px;
+  padding: 64px var(--rail) 12px;
   text-align: center;
   background: var(--page);
   pointer-events: none;
@@ -623,7 +627,7 @@ body.page-marketing {
 
 .jiaoyu-cards {
   position: relative;
-  width: min(1120px, calc(100% - 2 * var(--margin)));
+  width: min(var(--content), calc(100% - 2 * var(--rail)));
   margin: 0 auto;
 }
 
@@ -732,12 +736,12 @@ body.page-marketing {
 @media (max-width: 700px) {
   /* Phone is also a pull-up stack. Copy sits under the art so the scene stays visible. */
   .jiaoyu { padding-bottom: 24px; }
-  .jiaoyu-header { padding: 56px var(--margin) 8px; }
+  .jiaoyu-header { padding: 56px var(--rail) 8px; }
   .jiaoyu-title { font-size: clamp(26px, 8vw, 36px); }
   .jiaoyu-lede { margin-top: 10px; font-size: 15px; }
   .jiaoyu-cards {
     width: auto;
-    margin: 0 var(--margin);
+    margin: 0 var(--rail);
   }
   .jiaoyu-card { margin-bottom: 16px; }
   .jiaoyu-card[data-index="0"] { top: var(--jiaoyu-base, 148px); }
@@ -784,9 +788,11 @@ body.page-marketing {
 }
 
 .voices-header {
-  padding: 0 var(--margin);
-  margin-bottom: 36px;
+  width: min(var(--content), calc(100% - 2 * var(--rail)));
+  margin: 0 auto 36px;
+  padding: 0;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .voices-title,
@@ -813,11 +819,14 @@ body.page-marketing {
 .voices-deck {
   display: flex;
   gap: 16px;
+  width: min(var(--content), calc(100% - 2 * var(--rail)));
+  margin-inline: auto;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--margin);
-  padding: 0 var(--margin) 8px;
+  scroll-padding-inline: 0;
+  padding: 0 0 8px;
+  box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
@@ -827,7 +836,7 @@ body.page-marketing {
 }
 
 .voice-card {
-  flex: 0 0 min(440px, calc(100vw - var(--margin) - 72px));
+  flex: 0 0 min(440px, calc(100% - 48px));
   scroll-snap-align: start;
   margin: 0;
   padding: 28px 28px 32px;
@@ -889,8 +898,10 @@ body.page-marketing {
 }
 
 .page-marketing > .site-footer {
-  width: auto;
-  padding: 24px var(--margin) 36px;
+  width: min(var(--content), calc(100% - 2 * var(--rail)));
+  margin-inline: auto;
+  padding: 24px 0 36px;
+  box-sizing: border-box;
 }
 
 @media (max-width: 700px) {
@@ -917,9 +928,27 @@ body.page-marketing {
   object-position: center 68%;
 }
 
+.canvas::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(140px, 24vh, 260px);
+  background: linear-gradient(to bottom, rgb(255 255 255 / 0) 0%, var(--page) 88%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .intro {
-  padding: 16vh var(--margin) 8vh;
+  padding: 4vh 0 8vh;
   background: var(--page);
+}
+
+.intro-well {
+  width: min(var(--measure), calc(100% - 2 * var(--rail)));
+  margin-inline: auto;
+  box-sizing: border-box;
 }
 
 .intro-title {
@@ -943,7 +972,8 @@ body.page-marketing {
 
 @media (max-width: 700px) {
   .canvas { min-height: 480px; }
-  .intro { padding: 10vh var(--margin) 6vh; }
+  .canvas::after { height: clamp(96px, 16vh, 160px); }
+  .intro { padding: 4vh 0 6vh; }
   .intro-title { font-size: clamp(36px, 11vw, 56px); }
 }
 
@@ -975,7 +1005,7 @@ body.page-marketing {
   }
 
   .intro {
-    padding: 48px var(--margin) 40px;
+    padding: 32px 0 40px;
   }
 
   .intro .lede {
@@ -1006,7 +1036,7 @@ body.page-marketing {
   }
 
   .voice-card {
-    flex: 0 0 calc(100vw - var(--margin) - 52px);
+    flex: 0 0 calc(100% - 36px);
     padding: 22px 20px 24px;
   }
 
@@ -1021,7 +1051,9 @@ body.page-marketing {
 
 /* About us: team origins, official university marks, not a supporters row. */
 .about {
-  padding: calc(18vh + 48px) var(--margin) 10vh;
+  width: min(var(--content), calc(100% - 2 * var(--rail)));
+  margin-inline: auto;
+  padding: calc(18vh + 48px) 0 10vh;
   min-height: 70svh;
   background: var(--page);
   box-sizing: border-box;
@@ -1094,7 +1126,7 @@ body.page-marketing {
 
 @media (max-width: 700px) {
   .about {
-    padding: calc(72px + env(safe-area-inset-top, 0px)) var(--margin) 48px;
+    padding: calc(72px + env(safe-area-inset-top, 0px)) 0 48px;
     min-height: 0;
   }
 
