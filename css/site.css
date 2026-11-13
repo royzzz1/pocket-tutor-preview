@@ -357,28 +357,6 @@ body.page-marketing .whisper {
 
 .site-footer a:hover { color: var(--ink); }
 
-.site-footer .footer-end {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 16px 28px;
-}
-
-.site-footer .lang-switch {
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-}
-
-.site-footer .lang-switch button {
-  color: var(--muted);
-}
-
-.site-footer .lang-switch button:hover,
-.site-footer .lang-switch button[aria-pressed="true"] {
-  color: var(--ink);
-  font-weight: 600;
-}
 
 /* Motion: shutter on the first still; later type enters; stills may drift slightly. */
 .shot-hero img.still {
@@ -1210,6 +1188,10 @@ body.page-marketing .whisper {
   }
 
   .whisper .entry {
+    display: none;
+  }
+
+  .whisper .lang-switch {
     display: none;
   }
 
