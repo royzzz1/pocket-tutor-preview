@@ -33,7 +33,9 @@
   </header>
 
   <section class="canvas" id="top">
-    <img class="canvas-art" src="assets/illustrations/homepage-hero-locked-2026-11-13.jpg" width="1280" height="720" alt="A child seen from the side, sitting on a grassy hill with the cream screen robot, looking out at a storybook world of books, a ferris wheel, and a castle" data-i18n-alt="alt.hero">
+    <div class="canvas-motion" data-depth="1">
+      <img class="canvas-art" src="assets/illustrations/homepage-hero-locked-2026-11-13.jpg" width="1280" height="720" alt="A child seen from the side, sitting on a grassy hill with the cream screen robot, looking out at a storybook world of books, a ferris wheel, and a castle" data-i18n-alt="alt.hero">
+    </div>
   </section>
 
   <section class="intro" id="intro">
@@ -54,15 +56,18 @@
     </header>
     <div class="voices-deck">
       <article class="voice-card">
-        <img src="assets/illustrations/kid-portrait-01-circle-border.webp" width="640" height="640" alt="A colored-pencil portrait of a smiling boy in a teal hoodie" data-i18n-alt="alt.kid1">
+        <img src="assets/illustrations/kid-portrait-01-circle-border.webp" width="640" height="640" draggable="false" alt="A colored-pencil portrait of a smiling boy in a teal hoodie" data-i18n-alt="alt.kid1">
+        <p class="voice-name" data-i18n="voices.n1">Leo</p>
         <blockquote data-i18n="voices.q1">I used to get lost when the class moved on without me. Now it goes at my speed, and I get my own path — I can actually finish a lesson without feeling behind.</blockquote>
       </article>
       <article class="voice-card">
-        <img src="assets/illustrations/kid-portrait-02-circle-border.webp" width="640" height="640" alt="A colored-pencil portrait of a girl in a yellow sweater, looking to the side" data-i18n-alt="alt.kid2">
+        <img src="assets/illustrations/kid-portrait-02-circle-border.webp" width="640" height="640" draggable="false" alt="A colored-pencil portrait of a girl in a yellow sweater, looking to the side" data-i18n-alt="alt.kid2">
+        <p class="voice-name" data-i18n="voices.n2">Maya</p>
         <blockquote data-i18n="voices.q2">If I don't get something, I just say it out loud. It talks me through the hard part until it clicks — not just the right answer, but why.</blockquote>
       </article>
       <article class="voice-card">
-        <img src="assets/illustrations/kid-portrait-03-circle-border.webp" width="640" height="640" alt="A colored-pencil portrait of a smiling boy in a pink sweater" data-i18n-alt="alt.kid3">
+        <img src="assets/illustrations/kid-portrait-03-circle-border.webp" width="640" height="640" draggable="false" alt="A colored-pencil portrait of a smiling boy in a pink sweater" data-i18n-alt="alt.kid3">
+        <p class="voice-name" data-i18n="voices.n3">Owen</p>
         <blockquote data-i18n="voices.q3">I can practice for a few minutes at my desk, in the car, or outside. It's short, but I actually want to do the next bit.</blockquote>
       </article>
     </div>
@@ -123,5 +128,7 @@
 
   <script src="js/i18n.js"></script>
   <script src="js/jiaoyu.js"></script>
+  <script src="js/voices.js"></script>
+  <script src="js/parallax.js"></script>
 </body>
 </html>

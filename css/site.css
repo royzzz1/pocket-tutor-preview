@@ -620,9 +620,9 @@ body.page-marketing {
   margin: 14px auto 0;
   max-width: 36rem;
   font-family: var(--font-sans);
-  font-size: clamp(16px, 1.25vw, 19px);
-  line-height: 1.55;
-  color: var(--ink);
+  font-size: clamp(18px, 1.45vw, 22px);
+  line-height: 1.6;
+  color: #4A4844;
 }
 
 .jiaoyu-cards {
@@ -811,9 +811,9 @@ body.page-marketing {
   margin: 14px auto 0;
   max-width: 36rem;
   font-family: var(--font-sans);
-  font-size: clamp(16px, 1.25vw, 19px);
-  line-height: 1.55;
-  color: var(--ink);
+  font-size: clamp(18px, 1.45vw, 22px);
+  line-height: 1.6;
+  color: #4A4844;
 }
 
 .voices-deck {
@@ -829,6 +829,14 @@ body.page-marketing {
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  cursor: grab;
+  touch-action: pan-x;
+}
+
+.voices-deck.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+  scroll-snap-type: none;
 }
 
 .voices-deck::-webkit-scrollbar {
@@ -836,7 +844,7 @@ body.page-marketing {
 }
 
 .voice-card {
-  flex: 0 0 min(680px, calc(100% - 120px));
+  flex: 0 0 calc(100% - 80px);
   scroll-snap-align: start;
   margin: 0;
   padding: 28px 28px 32px;
@@ -850,7 +858,18 @@ body.page-marketing {
   display: block;
   width: 88px;
   height: 88px;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.voice-name {
+  margin: 0 0 16px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.4;
+  color: #4A4844;
 }
 
 .voice-card blockquote {
@@ -867,6 +886,12 @@ body.page-marketing {
   align-items: center;
   justify-content: center;
   gap: 12px 16px;
+}
+
+.intro-actions .cta {
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-family: var(--font-sans);
 }
 
 .cta-order {
@@ -921,6 +946,14 @@ body.page-marketing {
   background: var(--page);
 }
 
+.canvas-motion {
+  position: absolute;
+  inset: -7%;
+  width: 114%;
+  height: 114%;
+  will-change: transform;
+}
+
 .canvas-art {
   display: block;
   width: 100%;
@@ -935,10 +968,29 @@ body.page-marketing {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 34%;
-  background: linear-gradient(to bottom, rgb(255 255 255 / 0) 0%, var(--page) 92%);
+  height: 36%;
+  background:
+    url("../assets/illustrations/hero-pencil-fade.png") bottom / 100% 100% no-repeat,
+    linear-gradient(
+      to bottom,
+      rgb(255 255 255 / 0) 0%,
+      rgb(213 230 232 / 0) 22%,
+      rgb(213 230 232 / 0.22) 48%,
+      rgb(247 244 238 / 0.78) 76%,
+      #ffffff 100%
+    );
   pointer-events: none;
   z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas-motion {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: none !important;
+    will-change: auto;
+  }
 }
 
 .intro {
@@ -959,13 +1011,13 @@ body.page-marketing {
 }
 
 .intro-title {
-  margin: 0 auto 0.45em;
+  margin: 0 auto 0.4em;
   max-width: 14em;
   text-align: center;
   font-family: "Gochi Hand", "Noto Serif SC", cursive;
   font-weight: 400;
-  font-size: clamp(48px, 6vw, 84px);
-  line-height: 1.12;
+  font-size: clamp(64px, 8vw, 112px);
+  line-height: 1.02;
   color: var(--ink);
 }
 
@@ -974,9 +1026,9 @@ body.page-marketing {
   max-width: 22em;
   text-align: center;
   font-family: var(--font-sans);
-  font-size: clamp(16px, 1.25vw, 19px);
-  line-height: 1.55;
-  color: var(--ink);
+  font-size: clamp(18px, 1.45vw, 22px);
+  line-height: 1.6;
+  color: #4A4844;
 }
 
 .intro-actions {
@@ -986,7 +1038,7 @@ body.page-marketing {
 @media (max-width: 700px) {
   .canvas { min-height: 480px; }
   .intro { min-height: 100svh; padding: 14vh 0; }
-  .intro-title { font-size: clamp(36px, 11vw, 56px); }
+  .intro-title { font-size: clamp(48px, 13vw, 64px); }
 }
 
 
@@ -1032,7 +1084,7 @@ body.page-marketing {
 
   .voices,
   .backers {
-    padding: 12vh 0 14vh;
+    padding: 12vh 0 22vh;
   }
 
   .voices-header {
@@ -1045,7 +1097,7 @@ body.page-marketing {
   }
 
   .voice-card {
-    flex: 0 0 calc(100% - 36px);
+    flex: 0 0 calc(100% - 48px);
     padding: 22px 20px 24px;
   }
 
