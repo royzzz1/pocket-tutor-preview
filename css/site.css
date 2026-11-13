@@ -3,6 +3,7 @@
 /* Roy 2026-11-13: marketing ground is pure white. Do not change --page in tokens.css
    (kid.html / parent.html still use the cream page). */
 body.page-marketing {
+  position: relative;
   --page: #FFFFFF;
   /* Below the hero, content gathers to a centered well — not edge-to-edge tiling. */
   --rail: clamp(28px, 8vw, 112px);
@@ -22,6 +23,10 @@ body.page-marketing {
   align-items: center;
   padding: 16px var(--margin);
   pointer-events: none;
+}
+
+body.page-marketing .whisper {
+  background: linear-gradient(180deg, #fff 0%, #fff calc(100% - 10px), transparent 100%);
 }
 
 .whisper a,
@@ -643,7 +648,7 @@ body.page-marketing {
 .jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 136px) + 88px); z-index: 3; margin-bottom: 0; }
 
 .jiaoyu-end {
-  height: 32vh;
+  height: 12vh;
 }
 
 .jiaoyu-card-face {
@@ -787,7 +792,7 @@ body.page-marketing {
   .jiaoyu-card-title { font-size: clamp(22px, 6.5vw, 28px); }
   .jiaoyu-card-sub { font-size: 16px; }
   .jiaoyu-card-body { font-size: 15px; }
-  .jiaoyu-end { height: 24vh; }
+  .jiaoyu-end { height: 10vh; }
 }
 
 /* Voices: swipeable quote cards (gakku-style peek), not a wall of reviews. */
@@ -973,10 +978,59 @@ body.page-marketing {
   color: var(--ink);
 }
 
+
+/* Closing banner: full-width 21:9, already feathered into white. */
+.close-banner {
+  width: 100%;
+  margin: 8vh 0 0;
+  background: var(--page);
+}
+.close-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Side stickers live in the left/right rails only. Hidden on narrow screens. */
+.side-stickers {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  body.page-marketing { padding-bottom: 80px; }
+
+  .side-stickers {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100svh;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .sticker {
+    position: absolute;
+    width: clamp(40px, 4vw, 64px);
+    height: auto;
+  }
+
+  .sticker-l1 { top: 7%; left: clamp(10px, 1.6vw, 28px); transform: rotate(-16deg); }
+  .sticker-l2 { top: 30%; left: clamp(6px, 1.2vw, 22px); transform: rotate(10deg); }
+  .sticker-l3 { top: 54%; left: clamp(12px, 1.8vw, 30px); transform: rotate(-8deg); }
+  .sticker-l4 { top: 78%; left: clamp(8px, 1.4vw, 24px); transform: rotate(14deg); }
+  .sticker-r1 { top: 10%; right: clamp(10px, 1.6vw, 28px); transform: rotate(-12deg); }
+  .sticker-r2 { top: 34%; right: clamp(8px, 1.3vw, 24px); transform: rotate(18deg); }
+  .sticker-r3 { top: 58%; right: clamp(6px, 1.2vw, 22px); transform: rotate(-20deg); }
+  .sticker-r4 { top: 82%; right: clamp(12px, 1.8vw, 30px); transform: rotate(8deg); }
+}
+
 .page-marketing > .site-footer {
   width: min(var(--content), calc(100% - 2 * var(--rail)));
   margin-inline: auto;
-  padding: 24px 0 36px;
+  padding: 16px 0 48px;
   box-sizing: border-box;
 }
 
