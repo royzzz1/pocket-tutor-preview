@@ -1,0 +1,17 @@
+Official university marks used on about.html. Do not recolor, stretch, or replace with unofficial copies.
+
+Stanford University wordmark (Cardinal red, for light backgrounds)
+  File: stanford-university-wordmark-red.png
+  Source: Stanford Identity Guide
+  https://identity.stanford.edu/visual-identity/stanford-logos/wordmarks/
+  Asset: https://identity.stanford.edu/wp-content/uploads/sites/3/2020/06/wordmark-full-nospace-red.png
+  Use of Stanford marks in marketing typically requires permission: BrandManager@Stanford.edu
+
+Peking University official lockup (emblem + Chinese and English names, color, left-right, for light backgrounds)
+  File: pku-lockup-zh-en.png
+  Source: 北京大学标识办公室 下载专区
+  https://vim.pku.edu.cn/xzzq/index.htm
+  Pack: 标志与中英文校名组合规范.zip
+  https://vim.pku.edu.cn/docs/20240527144451726806.zip
+  File in pack: 标志与中英文校名组合规范_左右.png
+  Non-commercial use application is listed on the same page; contact pkuvi@pku.edu.cn

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="page.title.about">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>About us · Pocket Tutor</title>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/letter.css">
+  <link rel="stylesheet" href="css/site.css">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("pocket-tutor-lang") === "zh") {
+          document.documentElement.lang = "zh-Hans";
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body class="page-marketing page-about">
+  <header class="whisper">
+    <h1 class="wordmark"><a class="wordmark" href="index.html" data-i18n="brand">Pocket Tutor</a></h1>
+    <div class="whisper-end">
+      <a class="entry" href="kid.html" data-i18n="nav.try">Try a lesson</a>
+      <a class="entry" href="index.html#order" data-i18n="nav.order">Order now</a>
+      <a class="nav-page" href="about.html" aria-current="page" data-i18n="nav.about">About us</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-switch-sep" aria-hidden="true">/</span>
+        <button type="button" data-lang="zh" aria-pressed="false">中</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="about" id="about">
+    <h2 class="about-title" data-i18n="about.title">About us</h2>
+    <p class="lede" data-i18n="about.lede">Our team comes from Stanford University and Peking University.</p>
+    <ul class="about-marks">
+      <li class="mark-stanford">
+        <a href="https://www.stanford.edu/" rel="noopener noreferrer">
+          <img src="assets/logos/stanford-university-wordmark-red.png" width="566" height="70" alt="Stanford University" data-i18n-alt="alt.stanford">
+        </a>
+      </li>
+      <li class="mark-pku">
+        <a href="https://www.pku.edu.cn/" rel="noopener noreferrer">
+          <img src="assets/logos/pku-lockup-zh-en.png" width="394" height="111" alt="Peking University" data-i18n-alt="alt.pku">
+        </a>
+      </li>
+    </ul>
+    <p class="about-note" data-i18n="about.note">These marks identify where members of our team studied. They are not an official endorsement by either university.</p>
+  </main>
+
+  <footer class="site-footer">
+    <p class="brand" data-i18n="brand">Pocket Tutor</p>
+    <nav>
+      <a href="kid.html" data-i18n="nav.try">Try a lesson</a>
+      <a href="parent.html" data-i18n="nav.parent">Parent summary</a>
+      <a href="about.html" aria-current="page" data-i18n="nav.about">About us</a>
+    </nav>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+</body>
+</html>
