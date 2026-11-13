@@ -33,9 +33,7 @@
   </header>
 
   <section class="canvas" id="top">
-    <div class="canvas-motion" data-depth="1">
-      <img class="canvas-art" src="assets/illustrations/homepage-hero-locked-2026-11-13.jpg" width="1280" height="720" alt="A child seen from the side, sitting on a grassy hill with the cream screen robot, looking out at a storybook world of books, a ferris wheel, and a castle" data-i18n-alt="alt.hero">
-    </div>
+    <img class="canvas-art" src="assets/illustrations/homepage-hero-locked-2026-11-13.jpg" width="1280" height="720" alt="A child seen from the side, sitting on a grassy hill with the cream screen robot, looking out at a storybook world of books, a ferris wheel, and a castle" data-i18n-alt="alt.hero">
   </section>
 
   <section class="intro" id="intro">
@@ -54,7 +52,9 @@
       <h2 class="voices-title" data-i18n="voices.title">What people are saying</h2>
       <p class="voices-lede" data-i18n="voices.lede">How it feels to learn this way.</p>
     </header>
-    <div class="voices-deck">
+    <div class="voices-stage">
+      <button type="button" class="voices-nav voices-prev" data-i18n-aria="voices.prev" aria-label="Previous"></button>
+      <div class="voices-deck">
       <article class="voice-card">
         <img src="assets/illustrations/kid-portrait-01-circle-border.webp" width="640" height="640" draggable="false" alt="A colored-pencil portrait of a smiling boy in a teal hoodie" data-i18n-alt="alt.kid1">
         <p class="voice-name" data-i18n="voices.n1">Leo</p>
@@ -70,6 +70,8 @@
         <p class="voice-name" data-i18n="voices.n3">Owen</p>
         <blockquote data-i18n="voices.q3">I can practice for a few minutes at my desk, in the car, or outside. It's short, but I actually want to do the next bit.</blockquote>
       </article>
+      </div>
+      <button type="button" class="voices-nav voices-next" data-i18n-aria="voices.next" aria-label="Next"></button>
     </div>
   </section>
 
@@ -129,6 +131,5 @@
   <script src="js/i18n.js"></script>
   <script src="js/jiaoyu.js"></script>
   <script src="js/voices.js"></script>
-  <script src="js/parallax.js"></script>
 </body>
 </html>

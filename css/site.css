@@ -220,7 +220,7 @@ body.page-marketing {
 }
 
 .hero-copy .hero-title {
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: clamp(44px, 4.8vw, 70px);
   line-height: 1.18;
@@ -491,7 +491,7 @@ body.page-marketing {
   bottom: 8vh;
   z-index: 2;
   margin: 0;
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: 22px;
   line-height: 1.3;
@@ -504,7 +504,7 @@ body.page-marketing {
   bottom: 5vh;
   z-index: 2;
   margin: 0;
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: 18px;
   line-height: 1.35;
   letter-spacing: 0;
@@ -545,7 +545,7 @@ body.page-marketing {
 
 .shot-copy .shot-title {
   position: static;
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: clamp(36px, 4.2vw, 58px);
   line-height: 1.18;
@@ -557,7 +557,7 @@ body.page-marketing {
 .shot-copy .shot-note {
   position: static;
   margin: 0.7em 0 0;
-  font-family: var(--font-hand);
+  font-family: var(--font-sans);
   font-size: clamp(18px, 1.4vw, 22px);
   line-height: 1.35;
   letter-spacing: 0;
@@ -608,8 +608,8 @@ body.page-marketing {
 .jiaoyu-title {
   margin: 0 auto;
   max-width: 22em;
-  font-family: "Gochi Hand", "Noto Serif SC", cursive;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: clamp(32px, 4vw, 52px);
   line-height: 1.2;
   letter-spacing: 0;
@@ -697,8 +697,8 @@ body.page-marketing {
 
 .jiaoyu-card-title {
   margin: 0;
-  font-family: "Gochi Hand", "Noto Serif SC", cursive;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: clamp(28px, 3vw, 44px);
   line-height: 1.18;
   letter-spacing: 0;
@@ -810,8 +810,8 @@ body.page-marketing {
   margin: 0 auto;
   max-width: 22em;
   text-align: center;
-  font-family: "Gochi Hand", "Noto Serif SC", cursive;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: clamp(32px, 4vw, 52px);
   line-height: 1.2;
   color: var(--ink);
@@ -826,27 +826,67 @@ body.page-marketing {
   color: #4A4844;
 }
 
+.voices-stage {
+  width: min(var(--content), calc(100% - 2 * var(--rail)));
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  column-gap: 16px;
+  align-items: center;
+}
+
 .voices-deck {
   display: flex;
   gap: 16px;
-  width: min(var(--content), calc(100% - 2 * var(--rail)));
-  margin-inline: auto;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
   scroll-snap-type: x mandatory;
   scroll-padding-inline: 0;
   padding: 0 0 8px;
   box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  cursor: grab;
-  touch-action: pan-x;
 }
 
-.voices-deck.is-dragging {
-  cursor: grabbing;
-  user-select: none;
-  scroll-snap-type: none;
+.voices-nav {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  justify-self: center;
+}
+
+.voices-nav::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-style: solid;
+  border-color: currentColor;
+  border-width: 0 2px 2px 0;
+}
+
+.voices-prev::before { transform: rotate(135deg); margin-left: 3px; }
+.voices-next::before { transform: rotate(-45deg); margin-right: 3px; }
+
+.voices-nav:hover:not(:disabled) {
+  background: var(--ink);
+  color: #fff;
+}
+
+.voices-nav:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.voices-nav:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
 }
 
 .voices-deck::-webkit-scrollbar {
@@ -956,15 +996,9 @@ body.page-marketing {
   background: var(--page);
 }
 
-.canvas-motion {
-  position: absolute;
-  inset: -7%;
-  width: 114%;
-  height: 114%;
-  will-change: transform;
-}
-
 .canvas-art {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -993,15 +1027,6 @@ body.page-marketing {
   z-index: 1;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .canvas-motion {
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    transform: none !important;
-    will-change: auto;
-  }
-}
 
 .intro {
   min-height: 100svh;
@@ -1024,10 +1049,11 @@ body.page-marketing {
   margin: 0 auto 0.4em;
   max-width: 14em;
   text-align: center;
-  font-family: "Gochi Hand", "Noto Serif SC", cursive;
-  font-weight: 400;
-  font-size: clamp(64px, 8vw, 112px);
-  line-height: 1.02;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(48px, 6.5vw, 84px);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
@@ -1106,6 +1132,12 @@ body.page-marketing {
     margin-bottom: 0;
   }
 
+  .voices-stage {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+    column-gap: 8px;
+  }
+  .voices-nav { width: 36px; height: 36px; }
+
   .voice-card {
     flex: 0 0 calc(100% - 48px);
     padding: 22px 20px 24px;
@@ -1133,8 +1165,8 @@ body.page-marketing {
 .about-title {
   margin: 0 0 0.4em;
   max-width: 14em;
-  font-family: "Gochi Hand", "Noto Serif SC", cursive;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: clamp(48px, 6vw, 84px);
   line-height: 1.12;
   color: var(--ink);
