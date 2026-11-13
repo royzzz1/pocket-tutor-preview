@@ -925,3 +925,85 @@ body.page-marketing {
   .leaf { min-height: 480px; }
   .leaf-title { font-size: clamp(24px, 7vw, 32px); bottom: 6vh; }
 }
+
+
+/* Phone: keep the first canvas full-bleed, but stop cropping the picture-book
+   pages and wrapping the portraits into a 2+1 stack. Header CTAs already sit
+   in the intro, so they drop out of the slim bar. */
+@media (max-width: 700px) {
+  .whisper {
+    padding: calc(10px + env(safe-area-inset-top, 0px)) var(--margin) 10px;
+    background: #ffffff;
+  }
+
+  .whisper .entry {
+    display: none;
+  }
+
+  .whisper-end {
+    gap: 10px;
+  }
+
+  .intro {
+    padding: 48px var(--margin) 40px;
+  }
+
+  .intro .lede {
+    max-width: none;
+  }
+
+  .cta {
+    min-height: 44px;
+    padding: 12px 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .voices,
+  .backers {
+    padding: 40px var(--margin) 48px;
+  }
+
+  .voices-title,
+  .backers-title {
+    margin-bottom: 28px;
+  }
+
+  .voices-faces {
+    flex-wrap: nowrap;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .voices-faces img {
+    width: min(108px, 28vw);
+  }
+
+  .story-header {
+    padding: 48px var(--margin) 16px;
+  }
+
+  .leaf {
+    height: auto;
+    min-height: 0;
+  }
+
+  .leaf-art {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .leaf-title {
+    position: static;
+    left: auto;
+    bottom: auto;
+    padding: 16px var(--margin) 36px;
+    max-width: none;
+    font-size: clamp(24px, 7vw, 32px);
+  }
+}
