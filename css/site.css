@@ -630,7 +630,7 @@ body.page-marketing .whisper {
 .jiaoyu {
   position: relative;
   background: var(--page);
-  padding: 20vh 0 48px;
+  padding: 72px 0 0;
 }
 
 .jiaoyu-pin {
@@ -641,7 +641,7 @@ body.page-marketing .whisper {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 64px var(--rail) 12px;
+  padding: 0 var(--rail) 24px;
   text-align: center;
   background: var(--page);
   pointer-events: none;
@@ -685,16 +685,14 @@ body.page-marketing .whisper {
 .jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 136px) + 88px); z-index: 3; margin-bottom: 0; }
 
 .jiaoyu-end {
-  height: 12vh;
+  height: 72px;
 }
 
 .jiaoyu-card-face {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: calc(100svh - var(--jiaoyu-base, 180px) - 56px);
-  min-height: 480px;
-  max-height: 700px;
   border-radius: 24px;
   overflow: hidden;
   background: #fff;
@@ -703,33 +701,38 @@ body.page-marketing .whisper {
   will-change: transform, opacity;
 }
 
+.jiaoyu-art {
+  order: -1;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  /* Feather the art down into the white copy below. */
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
+}
+
 .jiaoyu-still {
-  position: absolute;
-  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
-  /* Feather the art into the white copy side; keep this one surface, not a left column. */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 6%, rgb(0 0 0 / 0.2) 22%, #000 44%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, transparent 6%, rgb(0 0 0 / 0.2) 22%, #000 44%, #000 100%);
+  object-position: right center;
+  /* These illustrations were composed with a left text well; crop it so the scene fills the card. */
+  transform: scale(1.28);
+  transform-origin: 100% 50%;
 }
 
 .jiaoyu-card-copy {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  position: static;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
-  width: min(42%, 440px);
-  padding: clamp(28px, 4vw, 48px) clamp(22px, 2.5vw, 36px);
-  background: transparent;
-  pointer-events: none;
+  width: auto;
+  padding: 20px 32px 28px;
+  background: #fff;
+  pointer-events: auto;
 }
 
 .jiaoyu-card-sub:empty,
@@ -784,9 +787,8 @@ body.page-marketing .whisper {
 }
 
 @media (max-width: 700px) {
-  /* Phone is also a pull-up stack. Copy sits under the art so the scene stays visible. */
-  .jiaoyu { padding-bottom: 24px; }
-  .jiaoyu-header { padding: 56px var(--rail) 8px; }
+  /* Phone is also a pull-up stack. Copy sits under the art, same as desktop. */
+  .jiaoyu-header { padding: 0 var(--rail) 16px; }
   .jiaoyu-title { font-size: clamp(26px, 8vw, 36px); }
   .jiaoyu-lede { margin-top: 10px; font-size: 15px; }
   .jiaoyu-cards {
@@ -798,50 +800,31 @@ body.page-marketing .whisper {
   .jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 148px) + 28px); }
   .jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 148px) + 56px); margin-bottom: 0; }
   .jiaoyu-card-face {
-    display: flex;
-    flex-direction: column;
-    height: calc(100svh - var(--jiaoyu-base, 148px) - 36px);
-    min-height: 520px;
-    max-height: none;
     border-radius: 20px;
   }
-  .jiaoyu-still {
-    position: static;
-    order: -1;
-    width: 100%;
-    height: auto;
-    flex: 1 1 auto;
+  .jiaoyu-art {
     min-height: 200px;
-    object-fit: cover;
-    object-position: right center;
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
   }
   .jiaoyu-card-copy {
-    position: static;
-    width: auto;
-    bottom: auto;
     padding: 16px 16px 20px;
     gap: 8px;
-    background: #fff;
-    pointer-events: auto;
   }
   .jiaoyu-card-title { font-size: clamp(22px, 6.5vw, 28px); }
   .jiaoyu-card-sub { font-size: 16px; }
   .jiaoyu-card-body { font-size: 15px; }
-  .jiaoyu-end { height: 10vh; }
+  .jiaoyu-end { height: 48px; }
 }
 
 /* Voices: swipeable quote cards (gakku-style peek), not a wall of reviews. */
 .voices,
 .backers {
-  padding: 16vh 0 28vh;
+  padding: 72px 0;
   background: var(--page);
 }
 
 .voices-header {
   width: min(var(--content), calc(100% - 2 * var(--rail)));
-  margin: 0 auto 8vh;
+  margin: 0 auto 32px;
   padding: 0;
   text-align: center;
   box-sizing: border-box;
@@ -1019,7 +1002,7 @@ body.page-marketing .whisper {
 /* Closing banner: full-bleed 21:9 frame, cover the box. Do not use height: auto. */
 .close-banner {
   width: 100%;
-  margin: 8vh 0 0;
+  margin: 72px 0 0;
   background: var(--page);
   aspect-ratio: 21 / 9;
   overflow: hidden;
@@ -1124,11 +1107,10 @@ body.page-marketing .whisper {
 
 
 .intro {
-  min-height: 100svh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 18vh 0;
+  padding: 24px 0 0;
   background: var(--page);
   box-sizing: border-box;
 }
@@ -1168,7 +1150,7 @@ body.page-marketing .whisper {
 
 @media (max-width: 700px) {
   .canvas { min-height: 480px; }
-  .intro { min-height: 100svh; padding: 14vh 0; }
+  .intro { padding: 16px 0 0; }
   .intro-title { font-size: clamp(48px, 13vw, 64px); }
 }
 
@@ -1206,8 +1188,7 @@ body.page-marketing .whisper {
   }
 
   .intro {
-    min-height: 100svh;
-    padding: 14vh 0;
+    padding: 16px 0 0;
   }
 
   .cta {
@@ -1221,11 +1202,11 @@ body.page-marketing .whisper {
 
   .voices,
   .backers {
-    padding: 12vh 0 22vh;
+    padding: 72px 0;
   }
 
   .voices-header {
-    margin-bottom: 48px;
+    margin-bottom: 24px;
   }
 
   .voices-title,
