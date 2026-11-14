@@ -631,6 +631,7 @@ body.page-marketing .whisper {
   position: relative;
   background: var(--page);
   padding: 72px 0 0;
+  --jiaoyu-last-step: 32px;
 }
 
 .jiaoyu-pin {
@@ -677,12 +678,18 @@ body.page-marketing .whisper {
   position: sticky;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   margin-bottom: 24px;
 }
 
 .jiaoyu-card[data-index="0"] { top: var(--jiaoyu-base, 136px); z-index: 1; }
-.jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 136px) + 44px); z-index: 2; }
-.jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 136px) + 88px); z-index: 3; margin-bottom: 0; }
+.jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 136px) + 16px); z-index: 2; }
+.jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 136px) + 32px); z-index: 3; margin-bottom: 0; }
+/* Cards 0 and 1 stay fully on screen (art + copy) long enough to read before the next card covers them. */
+.jiaoyu-card[data-index="0"],
+.jiaoyu-card[data-index="1"] {
+  min-height: calc(100svh - var(--jiaoyu-base, 136px) + 40vh);
+}
 
 .jiaoyu-end {
   height: 72px;
@@ -704,11 +711,12 @@ body.page-marketing .whisper {
 .jiaoyu-art {
   order: -1;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
+  max-height: calc(100svh - var(--jiaoyu-base, 136px) - var(--jiaoyu-last-step, 32px) - 8rem);
   overflow: hidden;
   /* Feather the art down into the white copy below. */
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
 }
 
 .jiaoyu-still {
@@ -716,10 +724,7 @@ body.page-marketing .whisper {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: right center;
-  /* These illustrations were composed with a left text well; crop it so the scene fills the card. */
-  transform: scale(1.28);
-  transform-origin: 100% 50%;
+  object-position: center center;
 }
 
 .jiaoyu-card-copy {
@@ -730,7 +735,7 @@ body.page-marketing .whisper {
   justify-content: flex-start;
   gap: 12px;
   width: auto;
-  padding: 20px 32px 28px;
+  padding: 16px 32px 18px;
   background: #fff;
   pointer-events: auto;
 }
@@ -796,17 +801,15 @@ body.page-marketing .whisper {
     margin: 0 var(--rail);
   }
   .jiaoyu-card { margin-bottom: 16px; }
+  .jiaoyu { --jiaoyu-last-step: 32px; }
   .jiaoyu-card[data-index="0"] { top: var(--jiaoyu-base, 148px); }
-  .jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 148px) + 28px); }
-  .jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 148px) + 56px); margin-bottom: 0; }
+  .jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 148px) + 16px); }
+  .jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 148px) + 32px); margin-bottom: 0; }
   .jiaoyu-card-face {
     border-radius: 20px;
   }
-  .jiaoyu-art {
-    min-height: 200px;
-  }
   .jiaoyu-card-copy {
-    padding: 16px 16px 20px;
+    padding: 14px 16px 16px;
     gap: 8px;
   }
   .jiaoyu-card-title { font-size: clamp(22px, 6.5vw, 28px); }
