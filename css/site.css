@@ -703,8 +703,6 @@ body.page-marketing .whisper {
   overflow: hidden;
   background: #fff;
   box-shadow: 0 24px 48px rgba(28, 28, 28, 0.08), 0 2px 8px rgba(28, 28, 28, 0.04);
-  transform-origin: center center;
-  will-change: transform, opacity;
 }
 
 .jiaoyu-still {
@@ -765,26 +763,6 @@ body.page-marketing .whisper {
   font-size: clamp(15px, 1.15vw, 18px);
   line-height: 1.6;
   color: var(--ink);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .jiaoyu-card-face {
-    animation: jiaoyu-card-in both linear;
-    animation-timeline: view();
-    animation-range: entry 0% entry 35%;
-  }
-}
-
-@keyframes jiaoyu-card-in {
-  from { transform: scale(0.92); opacity: 0.65; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .jiaoyu-card-face {
-    animation: none;
-    will-change: auto;
-  }
 }
 
 @media (max-width: 700px) {
