@@ -3,6 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Pocket Tutor is a small device that helps a child ask a question or snap a problem, practice after the lesson, and send a short summary to parents." data-i18n-content="page.description">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://pocket-tutor-preview.onrender.com/order.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Pocket Tutor">
+  <meta property="og:title" content="Order · Pocket Tutor" data-i18n-content="brand">
+  <meta property="og:description" content="Pocket Tutor is a small device that helps a child ask a question or snap a problem, practice after the lesson, and send a short summary to parents." data-i18n-content="page.description">
+  <meta property="og:url" content="https://pocket-tutor-preview.onrender.com/order.html">
+  <meta property="og:image" content="https://pocket-tutor-preview.onrender.com/assets/illustrations/homepage-hero-locked-2026-11-13.jpg">
+  <meta property="og:image:alt" content="A child seen from the side, sitting on a grassy hill with the cream screen robot, looking out at a storybook world of books, a ferris wheel, and a castle" data-i18n-content="alt.hero">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Order · Pocket Tutor" data-i18n-content="brand">
+  <meta name="twitter:description" content="Pocket Tutor is a small device that helps a child ask a question or snap a problem, practice after the lesson, and send a short summary to parents." data-i18n-content="page.description">
+  <meta name="twitter:image" content="https://pocket-tutor-preview.onrender.com/assets/illustrations/homepage-hero-locked-2026-11-13.jpg">
   <title>Order · Pocket Tutor</title>
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/tokens.css">
@@ -33,13 +47,23 @@
   </header>
 
   <main class="order" id="order">
-    <h2 class="order-title" data-i18n="order.title">Order Pocket Tutor</h2>
-    <p class="lede" data-i18n="order.lede">One Pocket Tutor, for a desk or a bag.</p>
-    <p class="order-price" data-i18n="order.price">$199</p>
-    <p class="order-unit" data-i18n="order.unit">One device.</p>
-    <div class="order-actions">
-      <button type="button" class="cta" data-i18n="order.cta">Order now</button>
+    <h2 class="order-title" data-enter data-i18n="order.title">Order Pocket Tutor</h2>
+    <p class="lede" data-enter data-i18n="order.lede">One Pocket Tutor, for a desk or a bag.</p>
+    <p class="order-price" data-enter data-i18n="order.price">$199</p>
+    <p class="order-unit" data-enter data-i18n="order.unit">One device.</p>
+    <div class="order-actions" data-enter>
+      <button type="button" class="cta" data-order-pending data-i18n="order.cta">Order now</button>
     </div>
+    <p class="order-note" data-enter data-i18n="order.pending">Ordering is not open yet. This button does not take payment.</p>
+    <div class="order-details">
+      <h2 data-enter data-i18n="order.includeTitle">What’s included</h2>
+      <p data-enter data-i18n="order.include">One Pocket Tutor. It can sit on a desk or come along.</p>
+      <h2 data-enter data-i18n="order.payTitle">Payment</h2>
+      <p data-enter data-i18n="order.pending">Ordering is not open yet. This button does not take payment.</p>
+      <h2 data-enter data-i18n="order.shipTitle">Shipping, returns, and warranty</h2>
+      <p data-enter data-i18n="order.ship">These terms have not been published yet. They will be written here before anyone can place an order.</p>
+    </div>
+    <p class="order-try" data-enter><a href="kid.html" data-i18n="order.try">Or try a short walkthrough of one lesson.</a></p>
   </main>
 
   <footer class="site-footer">
@@ -53,5 +77,8 @@
   </footer>
 
   <script src="js/i18n.js"></script>
+  <script src="js/vendor/anime.umd.min.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/chrome.js"></script>
 </body>
 </html>
