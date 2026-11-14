@@ -631,7 +631,6 @@ body.page-marketing .whisper {
   position: relative;
   background: var(--page);
   padding: 72px 0 0;
-  --jiaoyu-last-step: 32px;
 }
 
 .jiaoyu-pin {
@@ -683,12 +682,12 @@ body.page-marketing .whisper {
 }
 
 .jiaoyu-card[data-index="0"] { top: var(--jiaoyu-base, 136px); z-index: 1; }
-.jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 136px) + 16px); z-index: 2; }
-.jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 136px) + 32px); z-index: 3; margin-bottom: 0; }
-/* Cards 0 and 1 stay fully on screen (art + copy) long enough to read before the next card covers them. */
+.jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 136px) + 44px); z-index: 2; }
+.jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 136px) + 88px); z-index: 3; margin-bottom: 0; }
+/* Keep each 16:9 card fully readable before the next one covers it. */
 .jiaoyu-card[data-index="0"],
 .jiaoyu-card[data-index="1"] {
-  min-height: calc(100svh - var(--jiaoyu-base, 136px) + 40vh);
+  min-height: calc(100svh - var(--jiaoyu-base, 136px) + 28vh);
 }
 
 .jiaoyu-end {
@@ -697,9 +696,9 @@ body.page-marketing .whisper {
 
 .jiaoyu-card-face {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: block;
   width: 100%;
+  aspect-ratio: 16 / 9;
   border-radius: 24px;
   overflow: hidden;
   background: #fff;
@@ -708,36 +707,33 @@ body.page-marketing .whisper {
   will-change: transform, opacity;
 }
 
-.jiaoyu-art {
-  order: -1;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: calc(100svh - var(--jiaoyu-base, 136px) - var(--jiaoyu-last-step, 32px) - 8rem);
-  overflow: hidden;
-  /* Feather the art down into the white copy below. */
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 88%, transparent 100%);
-}
-
 .jiaoyu-still {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
+  /* Feather the art into the white copy side; keep this one surface, not a left column. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 6%, rgb(0 0 0 / 0.2) 22%, #000 44%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, transparent 6%, rgb(0 0 0 / 0.2) 22%, #000 44%, #000 100%);
 }
 
 .jiaoyu-card-copy {
-  position: static;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 12px;
-  width: auto;
-  padding: 16px 32px 18px;
-  background: #fff;
-  pointer-events: auto;
+  width: min(42%, 440px);
+  padding: clamp(28px, 4vw, 48px) clamp(22px, 2.5vw, 36px);
+  background: transparent;
+  pointer-events: none;
 }
 
 .jiaoyu-card-sub:empty,
@@ -792,7 +788,7 @@ body.page-marketing .whisper {
 }
 
 @media (max-width: 700px) {
-  /* Phone is also a pull-up stack. Copy sits under the art, same as desktop. */
+  /* Phone is also a pull-up stack. Same 16:9 frame, copy stays in the left well. */
   .jiaoyu-header { padding: 0 var(--rail) 16px; }
   .jiaoyu-title { font-size: clamp(26px, 8vw, 36px); }
   .jiaoyu-lede { margin-top: 10px; font-size: 15px; }
@@ -801,20 +797,20 @@ body.page-marketing .whisper {
     margin: 0 var(--rail);
   }
   .jiaoyu-card { margin-bottom: 16px; }
-  .jiaoyu { --jiaoyu-last-step: 32px; }
   .jiaoyu-card[data-index="0"] { top: var(--jiaoyu-base, 148px); }
-  .jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 148px) + 16px); }
-  .jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 148px) + 32px); margin-bottom: 0; }
+  .jiaoyu-card[data-index="1"] { top: calc(var(--jiaoyu-base, 148px) + 28px); }
+  .jiaoyu-card[data-index="2"] { top: calc(var(--jiaoyu-base, 148px) + 56px); margin-bottom: 0; }
   .jiaoyu-card-face {
     border-radius: 20px;
   }
   .jiaoyu-card-copy {
-    padding: 14px 16px 16px;
-    gap: 8px;
+    width: min(48%, 220px);
+    padding: 16px 14px;
+    gap: 6px;
   }
-  .jiaoyu-card-title { font-size: clamp(22px, 6.5vw, 28px); }
-  .jiaoyu-card-sub { font-size: 16px; }
-  .jiaoyu-card-body { font-size: 15px; }
+  .jiaoyu-card-title { font-size: clamp(18px, 5.5vw, 24px); }
+  .jiaoyu-card-sub { font-size: 14px; }
+  .jiaoyu-card-body { font-size: 13px; }
   .jiaoyu-end { height: 48px; }
 }
 
