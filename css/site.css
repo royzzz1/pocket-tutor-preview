@@ -35,11 +35,11 @@ body.page-marketing .whisper {
 }
 
 .whisper .wordmark {
-  font-family: var(--font-serif);
-  font-weight: 500;
+  font-family: var(--font-hand);
+  font-weight: 400;
   font-size: 21px;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: var(--ink);
   margin: 0;
   text-decoration: none;
@@ -333,10 +333,10 @@ body.page-marketing .whisper {
 }
 
 .site-footer .brand {
-  font-family: var(--font-serif);
-  font-weight: 500;
+  font-family: var(--font-hand);
+  font-weight: 400;
   font-size: 22px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: var(--ink);
   text-decoration: none;
   margin: 0;
